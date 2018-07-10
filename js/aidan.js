@@ -16,12 +16,12 @@ var indexReady = true;
 
 // Page variables
 var loadStatus = false;
-var loadFrame, prevScroll;
-var sidebarPadding = 16; //--> Padding above and below the sidebar
+var prevScroll;
 
 
 // ANIMATION ELEMENTS
 var scrollInterval;
+var allowedEndings = ['aidan'];
 var pageList = ['about', 'project', 'contact'];
 
 
@@ -33,6 +33,7 @@ function startMain() {
     initElements();
 
     var pathName = window.location.pathname;
+
     if(pathName.substring(pathName.length - 1).localeCompare('/') === 0){
         pathName = pathName.substring(0, pathName.length - 1);
         window.history.pushState("", "", pathName);
@@ -44,7 +45,9 @@ function startMain() {
     if (pageList.indexOf(pageName) != -1) {
         toggleContent(pageName);
     } else {
-        window.history.pushState("", "", pathName.substring(0, pathName.indexOf(pageName) - 1));
+        var pathEnding = pathName.substring(pathName.lastIndexOf('/') + 1);
+        if(allowedEndings.indexOf(pathEnding) === -1)
+            window.history.pushState("", "", pathName.substring(0, pathName.indexOf(pageName) - 1));
     }
 
     function onBlur() {
@@ -331,7 +334,8 @@ function initListeners() {
     for (var i = 0; i < len; i++) {
         parent[i].addEventListener('click', function() {
             var pathName = window.location.pathname;
-            if(pathName.substring(pathName.length - 1).localeCompare('/'))
+
+            if(pathName.substring(pathName.length - 1).localeCompare('/') === 0)
                 pathName = pathName.substring(0, pathName.length - 1);
 
             window.history.pushState("", "", pathName + '/' + this.dataset.name);
@@ -398,7 +402,7 @@ function toggleClass(element, val, vBool, check, cBool) {
     }
 }
 
-function getBodyTopEle() { const el = document.scrollingElement || document.documentElement; return el; }
+function getBodyTopEle() { var el = document.scrollingElement || document.documentElement; return el; }
 
 
 
