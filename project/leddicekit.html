@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <meta http-equiv="Content-Language" content="en_CA" />
+    <meta property="og:url" content="https://www.aidancrowther.com/project/leddicekit" />
+    <meta property="og:type" content="portfolio" />
+    <meta property="og:title" content="Aidan Crowther - Software Engineer" />
+    <meta property="og:description" content="A developer who enjoys teaching others how to integrate software and hardware." />
+    <meta property="og:image" content="https://www.ericbellamy.ca/resources/aidan-favicon.png" />
+    <meta name="keywords" content="aidan crowther, aidancrowther, person, software developer, software engineer, ottawa, canada, carleton, carleton university" />
+    <title>Aidan Crowther - Software Engineer</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+    <style>
+    *,
+    html {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        vertical-align: top;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    html {
+        color: #000;
+        font-family: 'Raleway', sans-serif;
+        letter-spacing: 0.03em;
+        line-height: 1.4;
+    }
+
+    .center-s {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+    /* PROJECT DETAILS PAGE */
+
+    #projectDetails {
+        min-height: 100vh;
+        font-size: 110%;
+    }
+
+    #detailContainer {
+        max-width: 820px;
+        padding: 108px 40px 40px 40px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    #detailNavWrapper {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        background: #fff;
+        z-index: 100;
+        opacity: 0;
+    }
+
+    #detailNav {
+        width: 100%;
+        max-width: 820px;
+        padding: 10px 40px;
+        margin: 0 auto;
+
+        display: flex;
+    }
+
+    .detailNavItem {
+        padding: 0.5rem;
+        transition: color .25s ease;
+        cursor: pointer;
+    }
+
+    .detailNavItem:hover {
+        color: #FF8200;
+    }
+
+    #detailNext {
+        padding: 96px 40px;
+        text-align: center;
+        border-top: 1px solid #FF8200;
+        font-size: 180%;
+        position: relative;
+        transition: color 0.6s ease, transform 0.6s ease;
+        cursor: pointer;
+        color: #FF8200;
+        display: block;
+    }
+
+    #detailNext>div {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+    }
+
+    #detailNext:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #FF8200;
+        transform: translate3d(0, 0, 0) scaleY(0);
+        transition: transform 0.6s ease;
+        transform-origin: center bottom;
+    }
+
+    #detailNext:hover {
+        color: #fff;
+    }
+
+    #detailNext:hover:after {
+        transform: translate3d(0, 0, 0) scaleY(1);
+    }
+
+    .NEXTDETAIL #detailNext {
+        transform: translate3d(0, 0, 0) translate(0, 100%);
+    }
+
+    .NEXTDETAIL #detailContainer {
+        animation: fadeOut 0.6s ease 0.1s 1 forwards;
+    }
+
+
+    .projectOptions>* {
+        display: none;
+    }
+
+    .LOADED .projectOptions>* {
+        display: block;
+    }
+
+    .PROJECT_0 .projectOptions>*:nth-child(1) {
+        display: block;
+    }
+
+    .PROJECT_1 .projectOptions>*:nth-child(2) {
+        display: block;
+    }
+
+    .PROJECT_2 .projectOptions>*:nth-child(3) {
+        display: block;
+    }
+
+    .PROJECT_3 .projectOptions>*:nth-child(4) {
+        display: block;
+    }
+
+    .PROJECT_4 .projectOptions>*:nth-child(5) {
+        display: block;
+    }
+
+
+    #detailRight {
+        flex: 1;
+        position: relative;
+        margin: 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #detailProjectType {
+        margin-top: auto;
+        color: #FF8200;
+        font-size: 80%;
+        opacity: 0;
+        transform: translate(4%, 0);
+    }
+
+    #detailTitle {
+        font-size: 180%;
+        opacity: 0;
+        transform: translate(0, 4%);
+    }
+
+    #detailHeaderImg {
+        margin-top: auto;
+        width: 320px;
+        position: relative;
+    }
+
+    #detailHeaderImg:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background: #e3e3e3;
+        transform-origin: center bottom;
+        transform: translate(-50%, 0) scaleY(0);
+    }
+
+    #detailHeaderImg img {
+        width: 100%;
+        opacity: 0;
+    }
+
+    #detailHeader {
+        display: flex;
+        margin-bottom: 3rem;
+        min-height: 200px;
+    }
+
+
+    .detailBody>* {
+        opacity: 0;
+    }
+
+    #detailBodies .heading {
+        font-weight: 700;
+        font-size: 120%;
+    }
+
+    #detailBodies .subheading {
+        color: #333;
+        font-weight: 700;
+        font-size: 100%;
+    }
+
+    #detailBodies .bodyText {
+        margin-bottom: 2rem;
+    }
+
+    #detailBodies .endText {
+        margin-bottom: 3rem;
+    }
+
+    #detailBodies .ulist {
+        margin: 1rem 1.5rem 3rem 1.5rem;
+    }
+
+    #detailBodies .ulist li {
+        margin: 0.25rem 0;
+    }
+
+    #detailBodies .dividerImg {
+        width: 100%;
+        max-width: 400px;
+        margin: 3rem 0 4rem 0;
+        box-shadow: 0 0 1px 1px #ccc;
+    }
+
+    #detailBodies .inlineImg {
+        width: 100%;
+        max-width: 400px;
+        margin: 2rem 0 3rem 0;
+        box-shadow: 0 0 1px 1px #ccc;
+    }
+
+    #detailBodies .codeBox {
+        width: 100%;
+        font-size: 90%;
+        padding: 0 40px;
+        margin: 3rem 0;
+    }
+
+    #detailBodies .code {
+        width: 100%;
+        background: #ccc;
+    }
+
+    #detailBodies .codeLink {
+        display: inline-block;
+        font-size: 90%;
+        color: #FF8200;
+        margin-top: 0.5rem;
+    }
+
+    #detailBodies .fileLinks {
+        margin-bottom: 3rem;
+    }
+
+    #detailBodies .fileLinks .fileLink {
+        display: block;
+        color: #FF8200;
+    }
+
+    .LOADED .detailBody {
+        display: block;
+    }
+
+    .LOADED #projectDetails {
+        display: block;
+    }
+
+    .LOADED #detailHeaderImg:before {
+        animation: revealAboutCover 0.9s cubic-bezier(0.785, 0.135, 0.150, 0.860) 0s 1 forwards;
+    }
+
+    .LOADED #detailHeaderImg img {
+        animation: fadeIn 0.3s ease 0.9s 1 forwards;
+    }
+
+    .LOADED #detailNavWrapper {
+        animation: fadeIn 0.6s ease 0.6s 1 forwards;
+    }
+
+    .LOADED #detailTitle {
+        animation: animateIn 0.6s ease 0.3s 1 forwards;
+    }
+
+    .LOADED #detailProjectType {
+        animation: animateIn 0.6s ease 0.3s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(1) {
+        animation: fadeIn 0.9s ease 0.3s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(2) {
+        animation: fadeIn 0.9s ease 0.45s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(3) {
+        animation: fadeIn 0.9s ease 0.6s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(4) {
+        animation: fadeIn 0.9s ease 0.75s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(n + 5) {
+        animation: fadeIn 1.2s ease 0.9s 1 forwards;
+    }
+    /* HIDE PROJECT RULES */
+
+    .HIDEPROJECT #detailNavWrapper {
+        opacity: 1;
+        animation: fadeOut 0.6s ease 0.3s 1 forwards;
+    }
+
+    .HIDEPROJECT #detailHeaderImg img {
+        opacity: 1;
+        animation: fadeOut 0.3s ease 0s 1 forwards;
+    }
+
+    .HIDEPROJECT #detailHeaderImg:before {
+        transform: translate(-50%, 0) scaleY(1);
+        animation: hideAboutCover 0.9s cubic-bezier(0.785, 0.135, 0.150, 0.860) 0.3s 1 forwards;
+    }
+
+    .HIDEPROJECT #detailRight {
+        animation: hideDetailRight 0.6s ease 0.3s 1 forwards;
+    }
+
+    @keyframes hideDetailRight {
+        to {
+            opacity: 0;
+            transform: translate(4%, 0);
+        }
+    }
+
+    .HIDEPROJECT #detailBodies {
+        animation: fadeOut 0.6s ease 0.6s 1 forwards;
+    }
+
+    @media screen and (max-width: 780px) {
+        #detailNext {
+            font-size: 150%;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        body .projectTitle {
+            font-size: 160%;
+        }
+        body .projectTextCol {
+            padding-right: 1rem;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        #detailContainer,
+        #detailNav {
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+        #detailHeader {
+            flex-direction: column;
+        }
+        #detailHeaderImg {
+            width: 100%;
+        }
+        #detailRight {
+            margin: 2rem 0 0 0;
+        }
+        #detailBodies .codeBox {
+            padding: 0;
+        }
+    }
+    /* KEYFRAMES */
+
+    @keyframes revealAboutCover {
+        to {
+            transform: translate(-50%, 0) scaleY(1);
+        }
+    }
+
+    @keyframes hideAboutCover {
+        to {
+            transform: translate(-50%, 0) scaleY(0);
+        }
+    }
+
+    @keyframes animateIn {
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+        }
+    }
+
+    @keyframes fullScale {
+        to {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+    }
+
+    @keyframes leftCenterScale {
+        to {
+            transform: translate(-50%, 0) scaleX(1) translate3d(0, 0, 0);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id='projectDetails'>
+        <div id='detailContainer'>
+            <div id='detailNavWrapper'>
+                <ul id='detailNav'>
+                    <li class='detailNavItem' data-name='about'>About</li>
+                    <li class='detailNavItem' data-name='project'>Projects</li>
+                    <li class='detailNavItem' data-name='contact'>Contact</li>
+                </ul>
+            </div>
+            <div id='detailHeader'>
+                <div id='detailHeaderImg' class='projectOptions'>
+                    <img data-lazysrc='/img/aidan/optimized/dicekit.jpg' />
+                </div>
+                <div id='detailRight'>
+                    <div id='detailProjectType' class='projectOptions'>
+                        <div>Custom Hardware Intro Kit</div>
+                    </div>
+                    <div id='detailTitle' class='projectOptions'>
+                        <div>LED Dice Kit</div>
+                    </div>
+                </div>
+            </div>
+            <div id='detailBodies'>
+                <div class='detailBody'>
+                    <div class='heading'>Preface</div>
+                    <div class='text endText'>This project was designed as a teaching tool for a workshop that I ran at Carleton University in hopes of teaching those interested the basics of interfacing software with hardware, and the tools used to do this. The board shown was designed and built by myself, however a slight redesign was made for the workshop to reduce costs. The final production of 30 boards as completed with the help of volunteers from the Carleton Computer Science Society. The board was designed to be very simple in its function and design, requiring very little in the way of components, allowing for an easier explanation of the board function. Through the design of this board I was able to get a better understanding of the process behind board design, production, and was able to utilize arduino sleep functions in order to save power.</div>
+                    <div class='heading'>Parts and Tools Used</div>
+                    <div class='ulist'>
+                        <ul>
+                            <li>1x Attiny45 microcontroller</li>
+                            <li>1x SN74HC595 shift registers</li>
+                            <li>1x 1KΩ resistors</li>
+                            <li>1x 220Ω resistors</li>
+                            <li>6x LED's (Red was used)</li>
+                            <li>1x DIP16 Sockets</li>
+                            <li>1x DIP8 Socket</li>
+                            <li>1x 14007 Diode</li>
+                            <li>2x CR2037 Battery Clips</li>
+                            <li>2x CR2037 Batteries</li>
+                            <li>1x Tactile Switch</li>
+                            <li>1x Copper Clad Board</li>
+                            <li>Drill press</li>
+                            <li>Band Saw</li>
+                            <li>Wire strippers</li>
+                            <li>Soldering iron</li>
+                            <li>Ferric Chloride</li>
+                            <li>Acetone</li>
+                        </ul>
+                    </div>
+                    <div class='heading'>Construction</div>
+                    <div class='text bodyText'>The construction process of this Project began with designing the schematic for the circuit in EagleCAD, where I designed a very rudimentary circuit which came to form the project. An Attiny45 was chosen as the microcontroller due to its low cost, and the fact that it could easily be programmed using the arduino IDE. The Attiny connects directly to an SN74HC595 and a button in order to control the board; the shift register is in turn connected to the 6 LEDs in order to display the output. Note however that only one resistor is used to limit the current to the LEDs; this was done for multiple reasons: firstly, cost is a factor in the design of this board, and the fewer resistors used reduces not only the cost of the resistors, but also the cost of copper clad due to not needing as much space. Another factor in using only one resistor is the fact that the utilized CR2037 batteries are only really rated for a maximum current draw of 20mA, meaning that we cannot drive all LEDs at once without overexerting the batteries. In order to mitigate this, persistance of vision was utilized to rapidly display only one LED at a time quickly enough that you see a fully lit board at all times. The only real drawback of using PoV is that the intensity of each LED is reduced, however this is not significant for this project.</div>
+                    <div class='text endText'>It can also be noted that a diode connects between the grounds of the IC's and the batteries; this was done to act as a low cost voltage regulator. The Attiny is not designed to run at voltages below 2.5V which would mean that 1 CR2032 would only be able to power it for about 1/3 of its total life which would be too wasteful. The only options at this point would be to either purchase higher cost low voltage chips or to use a seconf battery to increase the minimum voltage of the circuit to about 3.5V. The second option was chosen as it was a lower cost option, however this meant that the maximum voltage was now 6V which exceeded the Attiny's 5.5V maximum. This was solved by using the voltage drop of a diode to reduce the voltage to the chip by 0.7V meaning that the maximum is now 5.3V with a minimum of 2.8V. These values are well within the range of operation of the chips and ensured that the board would be able to maximize the useful lifespan of the CR2032's.</div>
+                    <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Schematic2.jpg'>
+                    <div class='text bodyText'>Following circuit design came the stage of board layout, wherein I maximized space savings while still leaving enough space for the board to have a relatively attractive layout. The LEDs were laid out in the shape of a die in order to more easily visulaize the rolled values from the dice, with both ICs laid out next to eachother and the LEDs. Note however that there is no programming header present on the board, this was added to the final boards, but this example board was able to make due with removing the Attiny for programming. It can also be observed that the trace widths used are significantly more than necessary for the current being used, however this results in an easier to etch board, and so was chosen more for ease of production than for appropriate current flow.</div>
+                    <div class='text bodyText'>Following board design came the process of etching the board; for this project I utilized the toner transfer method, however it quickly became apparent during production of the distribution boards that the toner transfer method scales incredibly poorly. So much so in fact, that in future if I find myself needing to make multiples copies of a board I will likely instead make use of a PCB milling service. Despite this, the initial test board turned out quite well using the toner transfer method, and it is sufficient for making small numbers of boards. An issue I also had to deal with when producing the board was that I had accidentally mirrored the image file, resulting in an unuseable board. Regardless of these issues, I was able to etch the board relatively quickly, and drilled all of the marked holes using a 0.8mm drill bit for the component leads, and a 1mm bit for the battery and diode terminals.</div>
+                    <div class='text bodyText'>With a fully prepared board in hand I proceeded on to the process of soldering on all of the components for the circuit using lead free solder. The circuit came together rather nicely following soldering and was ready for programming. The programming of this board was of significant importance as the code needed to be effective and easily understood in order to be understood by those at the workshop. The first task I had set out for myself was to generate a simple test script, in which, when a button is pressed it will light a single LED in the list in order to confirm that data is being shifted and read correctly. Following the confirmation that the circuit is functional I moved onto writing the code that would wakeup the Attiny from sleep and roll the die when the number is pressed. This was done through a number of processes. Firstly the Attiny would go into sleep mode, with the button set as an interrupt to wake it on changing states; sleep was achieved using the arduino sleep library to give access to nicer commands, and utilizing some register manipulation to put the chip into low power mode. Upon waking up the Attiny would send multiple die states to the register to simulate a roll, finally landing on a value that would be displayed for about 2 seconds. The numbers were chosen using the XOR value between the timing registers on the Attiny, this gives rather poor rando performance, but is far better than the arduino random function which eventually begins returning the same results consecutively. I may write a better random function in future, however for now this function served the purpouse sufficiently well. The number was then sent to a function which would write out the selected value to the die face one LED at a time for a given amount of time. Following the completion of displaying a number then Attiny would reset itself to its initial state, which is a rather crude hack to fix a memory leak caused by the millis command. In future I plan to fix this function removing the need for the reset at the end of the loop, however for now it is functional.</div>
+                    <div class='text bodyText'>Other issues that I ran into throughout this process include the fact that the arduino power function returns a floating point number, which is always rounded down when converted to an int. This caused problems when attempting to send data to the LED display as many values would be off by 1 when attempting to send powers of 2 to the display. Upon realizing this mistake however it was mitigated through the use of bitshifting in order to shift the value 1 over a number of bits equal to the power, resulting in an accurate integer result. It may also be noticed that the display did not need the control og a shift register in order to produce its output, as pairs of LEDs could be combined in such a way that only 4 Attiny pins are needed, however the regster was included in order to give more control over outputs, as well as to enable those attending the workshops to learn more about bit shifting.</div>
+                    <div class='subheading'>Arduino Scripts:</div>
+                    <div class='fileLinks'>
+                        <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Dice%20Kit/files/RegisterTest/RegisterTest.ino' target='_blank'>Register Test</a>
+                        <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Dice%20Kit/files/Die%20Generator/DiceKit/DiceKit.ino' target='_blank'>Die Generator</a>
+                    </div>
+                    <div class='heading'>Conclusion</div>
+                    <div class='text endText'>This project was fun, and let me play with adding lots of features to a project that intially only had 1. It was alot of fun, and taught me some liitations of working with Arduino as well. One major issue I had while building this project was a shift register with a damaged pin was leaking through one of its pins, and was frying one LED consistently. Another issue I ran into was a discovery I made in working with the Piezo Electric Speaker, wherein it appears that the is some small amount of crosstalk between PWM pins on the arduino, meaning that it is picking up small amounts of current and making sounds when the PWM register is altered. Despite these limitations, the project was still fun to work on, and I believe the end result turned out rathe well. I hope to continue adding features to this project in the future, and will likely update this post following.</div>
+                    <div class='fileLinks'>
+                        <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Dice%20Kit/files/Hardware%20Interfacing%20with%20Software.pptx' target='_blank'>Powerpoint Presentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a id='detailNext' class='projectOptions' href='/site/aidan/project/ledmatrix'>
+            <div>LED Matrix</div>
+        </a>
+    </div>
+    <noscript id="deferred-styles">
+        <link rel="stylesheet" type="text/css" href="/css/aidan.css" />
+    </noscript>
+    <script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+    </script>
+    <script type="text/javascript" async defer>
+    var adblock = true;
+    </script>
+    <script type="text/javascript" async defer>
+    [
+        '/js/project.js',
+        '/min/js/imgtosvg.js', //--> Load svgs first
+        '/min/js/lazyload.js',
+    ].forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        document.head.appendChild(script);
+    });
+    </script>
+</body>
+
+</html>

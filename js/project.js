@@ -22,7 +22,7 @@ var sidebarPadding = 16; //--> Padding above and below the sidebar
 
 // ANIMATION ELEMENTS
 var scrollInterval;
-var pageList = ['about', 'project', 'contact'];
+var pageList = ['portfolio', 'networkscaling', 'biasedpost', 'apexdesigns', 'acapollo'];
 
 
 // REQUEST HANDLER
@@ -31,21 +31,6 @@ var xhr;
 function startMain() {
     initSupports(); //Check what this browser supports
     initElements();
-
-    var pathName = window.location.pathname;
-    if(pathName.substring(pathName.length - 1).localeCompare('/') === 0){
-        pathName = pathName.substring(0, pathName.length - 1);
-        window.history.pushState("", "", pathName);
-    }
-
-    var pageName = pathName.substring(pathName.lastIndexOf('/') + 1);
-
-    // Toggle the right project page for the url, /project --> projectPage ele
-    if (pageList.indexOf(pageName) != -1) {
-        toggleContent(pageName);
-    } else {
-        window.history.pushState("", "", pathName.substring(0, pathName.indexOf(pageName) - 1));
-    }
 
     function onBlur() {
         // document.body.className = 'blurred';
@@ -293,29 +278,6 @@ function initElements() {
 }
 
 
-function toggleContent(targetPage) {
-    if (!body.classList.contains('FADENAV')) {
-        body.classList.toggle('FADENAV', true);
-
-        targetPage = document.getElementById(targetPage + "Page");
-
-        setTimeout(function(page) {
-            if (!body.classList.contains('CONTENTPAGE')) {
-                body.classList.toggle('FADENAV', false);
-                body.classList.toggle('HIDENAV', true);
-                body.classList.toggle('CONTENTPAGE', true);
-
-                var newScrollTop = page.offsetTop;
-                if (newScrollTop != 0)
-                    newScrollTop += 1;
-                bodyEle.scrollTop = newScrollTop;
-                handleWindowScroll();
-            }
-        }.bind(null, targetPage), 900);
-    }
-}
-
-
 var activePieces = [];
 
 function initListeners() {
@@ -326,27 +288,14 @@ function initListeners() {
     var parent;
     var len;
 
-    parent = document.getElementsByClassName('navIntroItem');
-    len = parent.length;
-    for (var i = 0; i < len; i++) {
-        parent[i].addEventListener('click', function() {
-            var pathName = window.location.pathname;
-            if(pathName.substring(pathName.length - 1).localeCompare('/'))
-                pathName = pathName.substring(0, pathName.length - 1);
-
-            window.history.pushState("", "", pathName + '/' + this.dataset.name);
-
-            toggleContent(this.dataset.name);
-        });
-    }
-
-    parent = document.getElementsByClassName('contentOption');
+    parent = document.getElementsByClassName('detailNavItem');
     len = parent.length;
     for (var i = 0; i < parent.length; i++) {
         parent[i].addEventListener('click', function() {
-            targetPage = document.getElementById(this.dataset.name + "Page");
-            scrollTo(bodyEle, targetPage.offsetTop, 500);
-            handleWindowScroll();
+            var pathName = window.location.pathname;
+            pathName = pathName.substring(0, pathName.lastIndexOf("/"));
+            pathName = pathName.substring(0, pathName.lastIndexOf("/"));
+            window.location.href = pathName + "/" + this.dataset.name;
         });
     }
 
@@ -398,7 +347,7 @@ function toggleClass(element, val, vBool, check, cBool) {
     }
 }
 
-function getBodyTopEle() { const el = document.scrollingElement || document.documentElement; return el; }
+function getBodyTopEle() { var el = document.scrollingElement || document.documentElement; return el; }
 
 
 

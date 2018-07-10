@@ -25,13 +25,16 @@
 
         vertical-align: top;
     }
+
     a {
         text-decoration: none;
         color: inherit;
     }
+
     li {
         list-style-type: none;
     }
+
     textarea {
         resize: none;
     }
@@ -114,15 +117,19 @@
         font-size: 400%;
         line-height: 1.2;
     }
+
     .FADENAV #navTitle {
         animation: verticalPosFade 0.7s ease 0s 1 forwards;
     }
+
     .FADENAV #navDesc {
         animation: verticalPosFade 0.7s ease 0.1s 1 forwards;
     }
+
     .FADENAV #navIntroList {
         animation: verticalPosFade 0.7s ease 0.2s 1 forwards;
     }
+
     @keyframes verticalPosFade {
         to {
             opacity: 0;
@@ -146,6 +153,7 @@
         position: relative;
         cursor: pointer;
     }
+
     body.CONTENTPAGE .navIntroItem {
         cursor: default;
     }
@@ -171,16 +179,19 @@
         width: 100%;
         padding: 1.5rem;
     }
+
     #contentList {
         float: right;
         cursor: pointer;
         display: flex;
         justify-content: center;
     }
+
     .contentOption {
         padding: 0 0.5rem;
         transition: color 0.2s ease;
     }
+
     .contentOption:hover {
         color: #FF8200;
     }
@@ -275,15 +286,12 @@
         font-weight: 500;
         font-size: 80%;
     }
-
-
     /* PROJECT DETAILS */
+
     #projectDetails {
         position: relative;
         display: none;
     }
-
-
     /* ABOUT ANIMATION PREP */
 
     #aboutLeft>.opacity>*,
@@ -321,10 +329,9 @@
             font-size: 24px;
         }
     }
-
-
     /* RESPONSIVE DESIGN */
-    @media screen and (max-width: 870px){
+
+    @media screen and (max-width: 870px) {
         body #aboutIntro {
             flex-direction: column;
             position: relative;
@@ -339,7 +346,7 @@
             max-width: none;
             flex-direction: row;
         }
-        #aboutLeft > .opacity {
+        #aboutLeft>.opacity {
             flex: 1;
             margin-left: 40px;
             text-align: left;
@@ -361,7 +368,8 @@
             display: none;
         }
     }
-    @media screen and (max-width: 780px){
+
+    @media screen and (max-width: 780px) {
         body #projectPage {
             padding: 60px 40px;
         }
@@ -369,7 +377,8 @@
             flex-direction: column;
             margin-bottom: 6rem;
         }
-        body .projectImageCol, body .projectImg {
+        body .projectImageCol,
+        body .projectImg {
             width: 100%;
         }
         body .projectTextCol {
@@ -377,7 +386,8 @@
             padding: 3rem 3rem 0 0;
         }
     }
-    @media screen and (max-width: 700px){
+
+    @media screen and (max-width: 700px) {
         #navTitle {
             font-size: 440%;
         }
@@ -402,7 +412,7 @@
         #aboutLeft {
             flex-direction: column;
         }
-        #aboutLeft > .opacity {
+        #aboutLeft>.opacity {
             margin-left: 0;
             margin-top: 3rem;
         }
@@ -479,7 +489,7 @@
                 <div id='aboutPointer'></div>
             </div>
             <div class='page' id='projectPage'>
-                <div class='projectItem' data-name='PROJECT_0'>
+                <a class='projectItem' href='/project/arduinoammeter'>
                     <div class='projectImageCol'>
                         <div class='projectImg'>
                             <img data-lazysrc='/img/aidan/optimized/arduinoammeter.jpg'>
@@ -490,8 +500,8 @@
                         <div class='projectDesc'>A small arduino based datalogger with a focus on power optimization.</div>
                         <div class='projectDate'></div>
                     </div>
-                </div>
-                <div class='projectItem' data-name='PROJECT_1'>
+                </a>
+                <a class='projectItem' href='/project/binaryclock'>
                     <div class='projectTextCol'>
                         <div class='projectTitle'>Binary Clock</div>
                         <div class='projectDesc'>A binary clock capable of telling the time, displaying animations, setting alarms and self-dimming based on ambient light levels.</div>
@@ -502,8 +512,8 @@
                             <img data-lazysrc='/img/aidan/optimized/binaryclock.jpg'>
                         </div>
                     </div>
-                </div>
-                <div class='projectItem' data-name='PROJECT_2'>
+                </a>
+                <a class='projectItem' href='/project/leddicekit'>
                     <div class='projectImageCol'>
                         <div class='projectImg'>
                             <img data-lazysrc='/img/aidan/optimized/dicekit.jpg'>
@@ -514,8 +524,8 @@
                         <div class='projectDesc'>Created a teaching tool for my workshop at Carleton University with the goal of introducing others to the hardware.</div>
                         <div class='projectDate'></div>
                     </div>
-                </div>
-                <div class='projectItem' data-name='PROJECT_3'>
+                </a>
+                <a class='projectItem' href='/project/ledmatrix'>
                     <div class='projectTextCol'>
                         <div class='projectTitle'>LED Matrix</div>
                         <div class='projectDesc'>Created an LED matrix using shift registers in order to gain a better understanding of binary data and bit logic.</div>
@@ -526,8 +536,8 @@
                             <img data-lazysrc='/img/aidan/optimized/ledmatrix.jpg'>
                         </div>
                     </div>
-                </div>
-                <div class='projectItem' data-name='PROJECT_4'>
+                </a>
+                <a class='projectItem' href='/project/odysseus'>
                     <div class='projectImageCol'>
                         <div class='projectImg'>
                             <img data-lazysrc='/img/aidan/optimized/odysseus.jpg'>
@@ -538,7 +548,7 @@
                         <div class='projectDesc'>A small arduino based datalogger with a focus on power optimization.</div>
                         <div class='projectDate'></div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class='page' id='contactPage'>
                 <div id='contactContainer' class='center-s'>
@@ -551,736 +561,6 @@
                     </ul>
                 </div>
                 <div class='credit'>Website created by <a href='https://ericbellamy.ca'>Eric Bellamy</a></div>
-            </div>
-        </div>
-        <div id='projectDetails'>
-            <div id='detailContainer'>
-                <div id='detailNavWrapper'>
-                    <ul id='detailNav'>
-                        <li class='detailNavItem' data-name='about'>About</li>
-                        <li class='detailNavItem' data-name='project'>Projects</li>
-                        <li class='detailNavItem' data-name='contact'>Contact</li>
-                    </ul>
-                </div>
-                <div id='detailHeader'>
-                    <div id='detailHeaderImg' class='projectOptions'>
-                        <img data-lazysrc='/img/aidan/optimized/arduinoammeter.jpg'>
-                        <img data-lazysrc='/img/aidan/optimized/binaryclock.jpg'>
-                        <img data-lazysrc='/img/aidan/optimized/dicekit.jpg'>
-                        <img data-lazysrc='/img/aidan/optimized/ledmatrix.jpg'>
-                        <img data-lazysrc='/img/aidan/optimized/odysseus.jpg'>
-                    </div>
-                    <div id='detailRight'>
-                        <div id='detailProjectType' class='projectOptions'>
-                            <div>Arduino Based Datalogger</div>
-                            <div>Binary Alarm Clock</div>
-                            <div>Custom Hardware Intro Kit</div>
-                            <div>LED Matrix</div>
-                            <div>Odysseus - Network Monitoring Tool</div>
-                        </div>
-                        <div id='detailTitle' class='projectOptions'>
-                            <div>Arduino Ammeter</div>
-                            <div>Binary Clock</div>
-                            <div>LED Dice Kit</div>
-                            <div>LED Matrix</div>
-                            <div>Odysseus - Network Monitoring Tool</div>
-                        </div>
-                    </div>
-                </div>
-                <div id='detailBodies' class='projectOptions'>
-                    <div class='detailBody'>
-                        <div class='heading'>Preface</div>
-                        <div class='text endText'>I've recently been working on building a small arduino based datalogger that can be left alone for many days on end and give me information about the weather in my area. This project has been requiring that I do alot of work on the front of power optimizations and collecting information about my batteries and conversion circuitry. One major issue that I ran into however was that a standard multimeter is terrible at reading rapidly fluctuating values, and wont give a good picture of my circuits current draw while running. The solution that I came up with then was to use an arduino based system to print rapidly collected data to a serial plotter in order to give me a better view of how the current draw changes while running my code. Do note however that this solution does have some issues, and would be better implemented with an oscilloscope if I had one. This circuit could also be iproved by using a high accuracy Op-Amp to provide an amplified signal from the voltage drop, which would in turn allow for a higher accuracy with a higher current allowance, however these can be expensive and hard to obtain, so I opted for a low cost approach.</div>
-                        <div class='heading'>Parts and Tools Used</div>
-                        <div class='ulist'>
-                            <ul>
-                                <li>1x Attiny85 microcontroller</li>
-                                <li>2x 1KΩ resistors</li>
-                                <li>1x 47Ω 5W resistor</li>
-                                <li>2x Tactile switches</li>
-                                <li>1x DIP8 Socket</li>
-                                <li>1x Tactile Switch</li>
-                                <li>Male headers</li>
-                                <li>Insulated & uninsulated copper wire</li>
-                                <li>Wire strippers</li>
-                                <li>Soldering iron</li>
-                            </ul>
-                        </div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Calculations.jpg'>
-                        <div class='text bodyText'>This project began as a mostly mathematical one; where in calculations were performed in order to determine the resistor value to be used based on the required accuracy of measurement and required current flow. These equations were simple variations on Ohm's law, which stated that V = IR. By knowing the number of divisions on the arduino's ADC and the supply voltage, we can calculate that each division of the ADC is equivalent to a ~5mV change in measured voltage. Using this value, we can divide it by our intended accuracy range, in this case 100uA, in order to calculate the required resistor value for the circuit, in this case being ~50Ω. Due to the fact that this resistor will need to go in series with our circuit, it will limit our maximum current draw, in this case to 100mA, which for the purpouses of working with an arduino will be more than sufficient as long as we dont run too many devices off of it. Also keep in mind that the resistor will need to be able to dissipate the power going through it, in this case the maximum power across the resistor wil be ~0.5W, but this will depend on the resistor value used and the supply voltage. Note that I used a 5W resistor, this was due to the fact that it was the only resistor of a close enough value that could handle more than 0.5W of heat dissipation.</div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Schematic.jpg'>
-                        <div class='text endText'>Once I had determined the operational range, and requirements of my circuit I proceeded to design a circuit that would meet the requirements. The used measurement device was an AtTiny85 in order to provide a reduced cost approach to solving this problem, while also allowing for a reduced footprint. The AtTiny has its digital pins 3 and 4 connected to a 6 pin FTDI header in order to provide serial data relaying to a computer that can then generate a graph based on the returned results. The circuit is powered through the FTDI header, and powers the circuit to be measured through it as well (Due to the resistor limiting current we don't have to worry about exceeding the USB maximum). Then the shunt resistor was connected between the FTDI ground and the ground going to the circuit, note that it is recommended to measure current from the ground in order to prevent the risk of a potential being generated across our arduino. The output ground connection is also connected to the AtTiny's analog pin 1 in order to measure the voltage drop across the resistor. Two tactile buttons were also added to the two remaining pins of the AtTiny with pull up resistors in order to start and stop the serial output to allow for ease of use.</div>
-                        <div class='codeBox'>
-                            <textarea class='code' rows='16'>
-                                #include <SoftwareSerial.h>
-
-                                #define TX 3
-                                #define RX 4
-                                #define currentPin A1
-                                #define button1 1
-                                #define button2 0
-
-                                int frequency = 10;
-                                bool reading = false;
-
-                                SoftwareSerial Serial(RX, TX);
-
-                                void setup() {
-                                  pinMode(button2, INPUT);
-                                  pinMode(button1, INPUT);
-                                  pinMode(currentPin, INPUT);
-                                  pinMode(RX, INPUT);
-                                  pinMode(TX, OUTPUT);
-                                  
-                                  Serial.begin(9600);
-                                  Serial.println("High speed Ammeter v1.0");
-
-                                  Serial.println("READY");
-                                }
-
-                                void loop(){
-                                  
-                                  if(reading){
-                                    double vDrop = analogRead(currentPin)*(5.0/1023.0);
-                                    double current = (vDrop*1000)/47.4;
-                                  
-                                    Serial.println(current, 6);
-                                  }
-
-                                  if(!digitalRead(button1)) reading = true;
-                                  if(!digitalRead(button2)) reading = false;
-                                  delay(frequency);
-                                }
-                            </textarea>
-                            <a class='codeLink' href='https://www.aidancrowther.com/resources/projects/Arduino%20Ammeter/files/Ammeter.ino' target='_blank'>Code File</a>
-                        </div>
-                        <div class='text bodyText'>With a circuit designed programming was the next task, where in a high speed serial output needed to be generated in order to get a better view of circuit current draw. Due to the AtTiny lacking hardware serial support we will need to make use of the software serial library, which has the consequence of forcing us to use an AtTiny85 due to it massively increasing our program spave requirements. This is not a major issue however, and it allows us to customise which pins we use for serial communication, due to this we can use digital pins 3 and 4 in order to keep the MCU in line with the FTDI header. We also set a variable in the code for a delay period between current measurements in order to allow for changes through the serial monitor in future, however at this time it can be changed manually. The main loop uses very simple logic, if the start and we are currently reading, then multiply the analog reading on the currentPin by the nuber of millivolts per division in order to get a reading of the voltage drop across the shunt in milliVolts. This value is then multipled by 1000 to get a voltage drop in volts, and is divided by the measured value of the resistor in order to return a value in milliAmps.</div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Waveform.jpg'>
-                        <div class='text endText'>By using a serial monitor you can read the values returned over serial, or you can plot the values using either a third party program or the arduino serial plotter. The generated plot will show milliAmps, and using a computer you can apply a timescale to the horizontal axis in order to determine power consumption over time. Using these graphs you can more easily determine why and where power is being consumed by your program, or other circuitry, and it allows for more accurate and effective debugging. Using this tool has made for a decent substitution in place of an oscilloscope as it allows me to collect relatively accurate power draw information, and when combined with a multimeter it allows for a very useable platform to measure, track, and reduce power consumption.</div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Layout.jpg'>
-                        <div class='text endText'>Future plans for this project include the production of a proper printed PCB of the design, as well as providing a 6 pin female header on the other end of the board allowing the device to be used in between an FTDI programmer and boards that have FTDI headers. To this end, I also plan to look into using the AtTiny in order to forward serial information from the secondary device, however I am at this time unsure as to how best go about this. Provided is a board layout design for the current version of the board that can be used with any device connected to the output pins. You can disregard the fact that the MCU in the eagle schematic is the AtTiny13, as the pinouts are the same. As can be observed however, the circuit is so simple that it can likely be more easily made with standard proto board as most connections are directly in line with one another.</div>
-                        <div class='heading'>Conclusion</div>
-                        <div class='text endText'>Despite this circuit initially being thought of as a quick and simple solution to the problem of quickly sampling and graphing current draw of electronics, it quickly became apparent that it is in fact significantly useful, and as such warranted proper construction, design, and implementation in order to make my project construction and testing easier and more effective. As such, I would highly recommend this board to any electronics hobbyist who needs a quick and simple way of measuring and plotting device current draw, as it makes for a very helful tool, especially when diagnosing hardware faults.</div>
-                    </div>
-                    <div class='detailBody'>
-                        <div class='heading'>Preface</div>
-                        <div class='text endText'>I started this project wanting to make a simple binary clock that could only tell the time; however, it quickly grew to include more features. At present this project is able to tell time using a DS1302 RTC module, with a CR2032 as a backup for time keeping, it can display siple animations, has an alarm clock, and automatically dims based on ambient lighting. I also intend to add buttons to allow for easier time/alarm setting that doesnt require reprogramming the micro controller every time.</div>
-                        <div class='heading'>Parts and Tools Used</div>
-                        <div class='ulist'>
-                            <ul>
-                                <li>1x Arduino pro mini</li>
-                                <li>1x 5V DC supply</li>
-                                <li>2x SN74HC595 shift registers</li>
-                                <li>1x 1KΩ resistors</li>
-                                <li>1x 10KΩ resistors</li>
-                                <li>16x 220Ω resistors</li>
-                                <li>16x LED's</li>
-                                <li>2x DIP16 Sockets</li>
-                                <li>1x RTC module</li>
-                                <li>1x CR2032</li>
-                                <li>16x LED holders</li>
-                                <li>1x Toggle Switch</li>
-                                <li>1x DC Barrel Jack Plug/Connector</li>
-                                <li>1x 10K LDR</li>
-                                <li>1x Piezo Speaker</li>
-                                <li>Male and Female Headers</li>
-                                <li>Insulated copper wire (solid core and stranded)</li>
-                                <li>Bussing Wire</li>
-                                <li>Wooden Box</li>
-                                <li>Spray Paint</li>
-                                <li>Drill press</li>
-                                <li>Wire strippers</li>
-                                <li>Soldering iron</li>
-                                <li>Box cutter</li>
-                                <li>Straight edge</li>
-                            </ul>
-                        </div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Matrix.jpg'>
-                        <div class='text bodyText'>The first step of construction was to drill a 4x4 grid of holes into the front panel of the wooden case used in order to install LED holders. This was done using a 19/64" drill bit in a drill press, and by measuring and marking the grid of locations in which to drill holes. Following the holes being made, the panel was sanded to remove splinters caused by the cheap wood being damaged by drilling. After sanding, the box's front and back portions were spray painted black in order to give them a nicer look. Once painting was done the LED holders were inserted and fastened into the holes, and had LEDs inserted into them, with all cathodes facing the top of the box, and anodes facing the bottom. A grid of bussing wire was used to connect all of the grounds together in rows, and then the 4 rows were joined by a column of bussing wire in the middle. Each LED then received a wire connected to the anode, whih lead to a male header. LEDs were connected to the header in groups of 8, being separated by a ground connection in the middle of the header. The rear of the panel then received a DC barrel jack socket which was connected to a length of wire, and a male header.</div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Controller-Front.jpg'>
-                        <div class='text bodyText'>With the LED display now done, it was time to build the control circuitry. The first step was to solder male headers onto a new Arduino pro mini, and then to connect it to a perf board. Next to it was placed an RTC module which was inserted into the board upside down in order to make use of its male headers. The Arduino and RTC were connected using the 3 wire interface that the module uses, there are also modules that use the I2C bus, however I do not have one of these. The RTC module was then connected to the VCC and GND pins of the Arduino in order to power it, while the arduino receives power through its RAW pin in order to allow input voltages of 5V-12V. A female header was used to connect the board to the input male header from the DC barrel jack. Some example code from the Arduino forums was then used in order to test and set the values of the RTC module. The date and time were simply inserted into the startup section of the program, and when it was uploaded the serial monitor was used to ensure the correct value was being displayed. Note that you should reupload this script following setting the time with the setup variable commented out in order to keep the clock from being reset on power loss.</div>
-                        <div class='text endText'>Once the RTC was set and tested the next step was to add the shift registers which would control the LEDs. Since the power supply is able to provide the neccessary current, we are able to light all LEDs at once, meaning that we will not have to worry about using POV, and while we could matrix this display in order to halve the nuber of needed registers, it is easier from a programming perspective to just drive them all directly. As such, the two registers were cascaded together in order to form a 16 bit register, to which we could then push data to control all of the LEDs individually. the outputs that went to the female header that connects to the display had 220Ω resistors added in order to limit the current flowing to the resistors. Standard procedure was followed for connecting the register to the Arduino with one exception, rather than connect the Output Enable line directly to ground as usual, both were tied together, and then connected to a PWM pin of the arduino so that we can then control the output brightness easily. In order to determine the ambient light value an LDR was installed to the top of the case, and connects to the board through headers. The LDR forms a voltage divider with another 10K0Ω resistor in order to measure the ambient light on an analog pin. A simple lighting test was written in order to confirm that it was able to read the ambient light value correctly.</div>
-                        <div class='subheading'>Arduino Files:</div>
-                        <div class='fileLinks'>
-                            <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Binary%20Clock/Files/test/test.ino' target='_blank'>RTC set and test</a>
-                            <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Binary%20Clock/Files/LightTest/LightTest.ino' target='_blank'>Ambient light measurement</a>
-                        </div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Controller-Back.jpg'>
-                        <div class='text endText'>With the circuit setup to read time and light, the next thing to add was a small piezo electric speaker. This speaker is connected to one of the Arduinos PWM pins in order to utilize the tone command to control it and playback tones. A small toggle switch was also placed on the side of the case to act as an alarm control switch. When flipped up the control pin is pulled low, and it disables the alarm, and when flipped up the alarm is enabled. Once a predefined alarm time is reached, if the alarm is enabled it will begine beeping and flashing the alarm time until the lever is flipped off. Although not incredibly loud, and crude, it performs quite well, however I may add a feature to use an audio jack to playback audio in future.</div>
-                        <div class='subheading'>Arduino Files:</div>
-                        <div class='fileLinks'>
-                            <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Binary%20Clock/Files/Speaker_Test/Speaker_Test.ino' target='_blank'>Speaker test</a>
-                        </div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Connections.jpg'>
-                        <div class='text bodyText'>With the current feature set implemented, all connections are made to the board using headers in order to allow for easy disassembly and upgrading. The final step of the project was to combine all of the features, and create a functional clock program. I began by porting over the time reading code from the RTC test program, and wrote a function to parse data sent from it. This function takes the hours tens digits, hours ones digit, minutes tens digit and minutes ones digit, as arguments, and parses the data to be displayed on the display. The loop function also writed a PWM value based on the currently detected light level in order to control the displays brightness based on ambient light. Note that because the Output Enable line is active low, 0 is maximum brightness, and 255 is off.</div>
-                        <div class='codeBox'>
-                            <textarea class='code' rows='16'>
-                                <!--
-                                //Pin connected to SH_CP of 74HC595
-                                #define clockPin 9
-                                //Pin connected to ST_CP of 74HC595
-                                #define latchPin 8
-                                //Pin connected to DS of 74HC595
-                                #define dataPin 7
-                                //Pin connected to OE of 74HC595
-                                #define outputEnable 10
-                                //Pin connected to the light sensor
-                                #define photocellPin A2
-                                // Arduino pin for the Serial Clock
-                                #define DS1302_SCLK_PIN 11
-                                // Arduino pin for the Data I/O
-                                #define DS1302_IO_PIN 12
-                                // Arduino pin for the Chip Enable
-                                #define DS1302_CE_PIN 13
-                                //Arduino pin for speaker
-                                #define SpeakerPin 5
-                                //Arduino pin connected to the alarm control switch
-                                #define AlarmPin 3
-
-
-                                // Macros to convert the bcd values of the registers to normal
-                                // integer variables.
-                                // The code uses separate variables for the high byte and the low byte
-                                // of the bcd, so these macros handle both bytes separately.
-                                #define bcd2bin(h,l)    (((h)*10) + (l))
-                                #define bin2bcd_h(x)   ((x)/10)
-                                #define bin2bcd_l(x)    ((x)%10)
-
-
-                                // Register names.
-                                // Since the highest bit is always '1', 
-                                // the registers start at 0x80
-                                // If the register is read, the lowest bit should be '1'.
-                                #define DS1302_SECONDS           0x80
-                                #define DS1302_MINUTES           0x82
-                                #define DS1302_HOURS             0x84
-                                #define DS1302_DATE              0x86
-                                #define DS1302_MONTH             0x88
-                                #define DS1302_DAY               0x8A
-                                #define DS1302_YEAR              0x8C
-                                #define DS1302_ENABLE            0x8E
-                                #define DS1302_TRICKLE           0x90
-                                #define DS1302_CLOCK_BURST       0xBE
-                                #define DS1302_CLOCK_BURST_WRITE 0xBE
-                                #define DS1302_CLOCK_BURST_READ  0xBF
-                                #define DS1302_RAMSTART          0xC0
-                                #define DS1302_RAMEND            0xFC
-                                #define DS1302_RAM_BURST         0xFE
-                                #define DS1302_RAM_BURST_WRITE   0xFE
-                                #define DS1302_RAM_BURST_READ    0xFF
-
-
-
-                                // Defines for the bits, to be able to change 
-                                // between bit number and binary definition.
-                                // By using the bit number, using the DS1302 
-                                // is like programming an AVR microcontroller.
-                                // But instead of using "(1<<X)", or "_BV(X)", 
-                                // the Arduino "bit(X)" is used.
-                                #define DS1302_D0 0
-                                #define DS1302_D1 1
-                                #define DS1302_D2 2
-                                #define DS1302_D3 3
-                                #define DS1302_D4 4
-                                #define DS1302_D5 5
-                                #define DS1302_D6 6
-                                #define DS1302_D7 7
-
-
-                                // Bit for reading (bit in address)
-                                #define DS1302_READBIT DS1302_D0 // READBIT=1: read instruction
-
-                                // Bit for clock (0) or ram (1) area, 
-                                // called R/C-bit (bit in address)
-                                #define DS1302_RC DS1302_D6
-
-                                // Seconds Register
-                                #define DS1302_CH DS1302_D7   // 1 = Clock Halt, 0 = start
-
-                                // Hour Register
-                                #define DS1302_AM_PM DS1302_D5 // 0 = AM, 1 = PM
-                                #define DS1302_12_24 DS1302_D7 // 0 = 24 hour, 1 = 12 hour
-
-                                // Enable Register
-                                #define DS1302_WP DS1302_D7   // 1 = Write Protect, 0 = enabled
-
-                                int previousMinute = 0;
-
-                                typedef struct ds1302_struct
-                                {
-                                  uint8_t Seconds:4;      // low decimal digit 0-9
-                                  uint8_t Seconds10:3;    // high decimal digit 0-5
-                                  uint8_t CH:1;           // CH = Clock Halt
-                                  uint8_t Minutes:4;
-                                  uint8_t Minutes10:3;
-                                  uint8_t reserved1:1;
-                                  union
-                                  {
-                                    struct
-                                    {
-                                      uint8_t Hour:4;
-                                      uint8_t Hour10:2;
-                                      uint8_t reserved2:1;
-                                      uint8_t hour_12_24:1; // 0 for 24 hour format
-                                    } h24;
-                                    struct
-                                    {
-                                      uint8_t Hour:4;
-                                      uint8_t Hour10:1;
-                                      uint8_t AM_PM:1;      // 0 for AM, 1 for PM
-                                      uint8_t reserved2:1;
-                                      uint8_t hour_12_24:1; // 1 for 12 hour format
-                                    } h12;
-                                  };
-                                  uint8_t Date:4;           // Day of month, 1 = first day
-                                  uint8_t Date10:2;
-                                  uint8_t reserved3:2;
-                                  uint8_t Month:4;          // Month, 1 = January
-                                  uint8_t Month10:1;
-                                  uint8_t reserved4:3;
-                                  uint8_t Day:3;            // Day of week, 1 = first day (any day)
-                                  uint8_t reserved5:5;
-                                  uint8_t Year:4;           // Year, 0 = year 2000
-                                  uint8_t Year10:4;
-                                  uint8_t reserved6:7;
-                                  uint8_t WP:1;             // WP = Write Protect
-                                };
-
-                                int alarmTime[] = {0, 7, 0, 0};
-
-                                void setup() {
-
-                                  ds1302_struct rtc;
-
-                                  Serial.begin(9600);
-                                  Serial.println(F("Binary Clock"));
-                                  Serial.println(F("Version 1, May 2017"));
-                                  
-                                  pinMode(latchPin, OUTPUT);
-                                  pinMode(clockPin, OUTPUT);
-                                  pinMode(dataPin, OUTPUT);
-                                  pinMode(outputEnable, OUTPUT);
-                                  pinMode(SpeakerPin, OUTPUT);
-                                  pinMode(AlarmPin, INPUT);
-
-                                  noTone(SpeakerPin);
-
-                                }
-
-                                void loop() {
-                                  ds1302_struct rtc;
-                                  char buffer[80];     // the code uses 70 characters.
-
-                                  // Read all clock data at once (burst mode).
-                                  DS1302_clock_burst_read( (uint8_t *) &rtc);
-
-                                  analogWrite(outputEnable, map(analogRead(photocellPin), 0, 1023, 255, 64));
-
-                                  sprintf( buffer, "Time = %02d:%02d:%02d\n", \
-                                  bcd2bin( rtc.h24.Hour10, rtc.h24.Hour), \
-                                  bcd2bin( rtc.Minutes10, rtc.Minutes), \
-                                  bcd2bin( rtc.Seconds10, rtc.Seconds));
-                                  Serial.print(buffer);
-                                  
-                                  printTime(rtc.h24.Hour10, rtc.h24.Hour, rtc.Minutes10, rtc.Minutes, false);
-
-                                  delay(500);
-
-                                }
-
-                                void printTime(int hour10, int hour1, int minute10, int minute1, bool alarm){
-
-                                  if((alarmTime[0] == hour10) && (alarmTime[1] == hour1) && (alarmTime[2] == minute10) && (alarmTime[3] == minute1) && !alarm){
-                                    bool flip = true;
-                                    while(digitalRead(AlarmPin)){
-                                      tone(SpeakerPin, 200);
-                                      delay(100);
-                                      tone(SpeakerPin, 25);
-                                      delay(100);
-                                      noTone(SpeakerPin);
-                                      if(flip){
-                                        printTime(hour10, hour1, minute10, minute1, true);
-                                        flip = false;
-                                      }
-                                      else{
-                                        dataShift(0);
-                                        flip = true;
-                                      }
-                                    }
-                                  }
-
-                                  int data[] = {hour10, hour1, minute10, minute1};
-                                  int result = 0;
-                                  
-                                  for(int i=0; i<4; i++){
-                                    result += ((1&data[i])<<i)+((2&data[i])<<(3+i))+((4&data[i])<<(6+i))+((8&data[i])<<(9+i));
-                                  }
-
-                                  if(minute1 != previousMinute){
-                                    runAnimation(result);
-                                    previousMinute = minute1;
-                                  }
-                                  else dataShift(result);
-                                  noTone(SpeakerPin);
-                                }
-
-                                void runAnimation(int result){
-
-                                  int animation = random(0, 4);
-                                  
-                                  switch(animation){
-                                    case(0):
-                                      dataShift(4369);
-                                      delay(150);
-                                      dataShift(13107);
-                                      delay(150);
-                                      dataShift(30583);
-                                      delay(150);
-                                      dataShift(65535);
-                                      delay(150);
-                                    break;
-
-                                    case(1):
-                                      dataShift(34952);
-                                      delay(150);
-                                      dataShift(52428);
-                                      delay(150);
-                                      dataShift(61166);
-                                      delay(150);
-                                      dataShift(65535);
-                                      delay(150);
-                                    break;
-
-                                    case(2):
-                                      dataShift(15);
-                                      delay(150);
-                                      dataShift(255);
-                                      delay(150);
-                                      dataShift(4095);
-                                      delay(150);
-                                      dataShift(65535);
-                                      delay(150);
-                                    break;
-
-                                    case(3):
-                                      dataShift(61440);
-                                      delay(150);
-                                      dataShift(65280);
-                                      delay(150);
-                                      dataShift(65520);
-                                      delay(150);
-                                      dataShift(65535);
-                                      delay(150);
-                                    break;
-                                  }
-
-                                  delay(500);
-                                  int displayTime = random(0, 4);
-
-                                  switch(displayTime){
-                                    case(0):
-                                      dataShift(65535);
-                                      delay(150);
-                                      dataShift(30583|result);
-                                      delay(150);
-                                      dataShift(13107|result);
-                                      delay(150);
-                                      dataShift(4369|result);
-                                      delay(150);
-                                    break;
-
-                                    case(1):
-                                      dataShift(65535);
-                                      delay(150);
-                                      dataShift(61166|result);
-                                      delay(150);
-                                      dataShift(52428|result);
-                                      delay(150);
-                                      dataShift(34952|result);
-                                      delay(150);
-                                    break;
-
-                                    case(2):
-                                      dataShift(65535);
-                                      delay(150);
-                                      dataShift(4095|result);
-                                      delay(150);
-                                      dataShift(255|result);
-                                      delay(150);
-                                      dataShift(15|result);
-                                      delay(150);
-                                    break;
-
-                                    case(3):
-                                      dataShift(65535);
-                                      delay(150);
-                                      dataShift(65520|result);
-                                      delay(150);
-                                      dataShift(65280|result);
-                                      delay(150);
-                                      dataShift(61440|result);
-                                      delay(150);
-                                    break;
-                                  }
-
-                                  dataShift(result);
-                                }
-
-                                //shift out data to the register MSB first
-                                void dataShift(int data){
-                                  //initialize the pinState variable
-                                  int pinState;
-                                  //set the clock and latch to be logic level LOW
-                                  digitalWrite(latchPin, 0);
-                                  digitalWrite(clockPin, 0);
-                                  digitalWrite(latchPin, 0);
-                                  //for each bit
-                                  for(int i=0; i<16; i++){
-                                    //set clock to logic LOW
-                                    digitalWrite(clockPin, 0);
-                                    pinState = 0;
-                                    //if the current bit of the number a 1, set pinState to 1
-                                    if(data & (1<<i)){
-                                      pinState = 1;
-                                    }
-                                    //write the pinState to the register, and pulse the clock to set it
-                                    digitalWrite(dataPin, pinState);
-                                    digitalWrite(clockPin, 1);
-                                  }
-                                  //set the clock to logic level LOW
-                                  digitalWrite(clockPin, 0);
-                                  digitalWrite(latchPin, 1);
-                                }
-
-                                void DS1302_clock_burst_read( uint8_t *p)
-                                {
-                                  int i;
-
-                                  _DS1302_start();
-
-                                  // Instead of the address, 
-                                  // the CLOCK_BURST_READ command is issued
-                                  // the I/O-line is released for the data
-                                  _DS1302_togglewrite( DS1302_CLOCK_BURST_READ, true);  
-
-                                  for( i=0; i<8; i++)
-                                  {
-                                    *p++ = _DS1302_toggleread();
-                                  }
-                                  _DS1302_stop();
-                                }
-
-                                void _DS1302_start( void)
-                                {
-                                  digitalWrite( DS1302_CE_PIN, LOW); // default, not enabled
-                                  pinMode( DS1302_CE_PIN, OUTPUT);  
-
-                                  digitalWrite( DS1302_SCLK_PIN, LOW); // default, clock low
-                                  pinMode( DS1302_SCLK_PIN, OUTPUT);
-
-                                  pinMode( DS1302_IO_PIN, OUTPUT);
-
-                                  digitalWrite( DS1302_CE_PIN, HIGH); // start the session
-                                  delayMicroseconds( 4);           // tCC = 4us
-                                }
-
-                                void _DS1302_stop(void)
-                                {
-                                  // Set CE low
-                                  digitalWrite( DS1302_CE_PIN, LOW);
-
-                                  delayMicroseconds( 4);           // tCWH = 4us
-                                }
-
-                                uint8_t _DS1302_toggleread( void)
-                                {
-                                  uint8_t i, data;
-
-                                  data = 0;
-                                  for( i = 0; i <= 7; i++)
-                                  {
-                                    // Issue a clock pulse for the next databit.
-                                    // If the 'togglewrite' function was used before 
-                                    // this function, the SCLK is already high.
-                                    digitalWrite( DS1302_SCLK_PIN, HIGH);
-                                    delayMicroseconds( 1);
-
-                                    // Clock down, data is ready after some time.
-                                    digitalWrite( DS1302_SCLK_PIN, LOW);
-                                    delayMicroseconds( 1);        // tCL=1000ns, tCDD=800ns
-
-                                    // read bit, and set it in place in 'data' variable
-                                    bitWrite( data, i, digitalRead( DS1302_IO_PIN)); 
-                                  }
-                                  return( data);
-                                }
-
-                                void _DS1302_togglewrite( uint8_t data, uint8_t release)
-                                {
-                                  int i;
-
-                                  for( i = 0; i <= 7; i++)
-                                  { 
-                                    // set a bit of the data on the I/O-line
-                                    digitalWrite( DS1302_IO_PIN, bitRead(data, i));  
-                                    delayMicroseconds( 1);     // tDC = 200ns
-
-                                    // clock up, data is read by DS1302
-                                    digitalWrite( DS1302_SCLK_PIN, HIGH);     
-                                    delayMicroseconds( 1);     // tCH = 1000ns, tCDH = 800ns
-
-                                    if( release && i == 7)
-                                    {
-                                      // If this write is followed by a read, 
-                                      // the I/O-line should be released after 
-                                      // the last bit, before the clock line is made low.
-                                      // This is according the datasheet.
-                                      // I have seen other programs that don't release 
-                                      // the I/O-line at this moment,
-                                      // and that could cause a shortcut spike 
-                                      // on the I/O-line.
-                                      pinMode( DS1302_IO_PIN, INPUT);
-
-                                      // For Arduino 1.0.3, removing the pull-up is no longer needed.
-                                      // Setting the pin as 'INPUT' will already remove the pull-up.
-                                      // digitalWrite (DS1302_IO, LOW); // remove any pull-up  
-                                    }
-                                    else
-                                    {
-                                      digitalWrite( DS1302_SCLK_PIN, LOW);
-                                      delayMicroseconds(1);       // tCL=1000ns, tCDD=800ns
-                                    }
-                                  }
-                                }
-                                -->
-                            </textarea>
-                            <a class='codeLink' href='https://www.aidancrowther.com/resources/projects/Arduino%20Ammeter/files/Ammeter.ino' target='_blank'>Code File</a>
-                        </div>
-                        <div class='text bodyText'>The printTime function then checks if the alarm time has been reached and the alarm is activated. If so, it will flash the time for the alarm and begin beeping the buzzer, and will not stop until the alarm switch is turned off. Otherwise the time is displayed by first creating an array containing the argument values, then a for loop is iterated from 0 - 3. Since the LEDs are wired sequentally on the horizontal axis, we simply have to calculate the current column (0-3), then bitwise and the value of that index in binary with the current value we are looking at for that column. Then each calculated value is shifted to the left equal to its equivalent index in the shift registers, and added to a result variable. Once all values have been determined for the current time it is sent to the shift registers and displayed.</div>
-                        <div class='text endText'>The clock also checks if it has incremented by 1 minute, and if so, will call the animation function. This function takes a display result given to it, and will randomly select a routine that is used to turn on every LED, before turning them off sequentially, leaving the current time displayed.</div>
-                        <div class='subheading'>Arduino Files:</div>
-                        <div class='fileLinks'>
-                            <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Binary%20Clock/files/binaryClock/binaryClock.ino' target='_blank'>Binary Clock</a>
-                        </div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Controller-Back.jpg'>
-                        <div class='heading'>Conclusion</div>
-                        <div class='text endText'>This project was fun, and let me play with adding lots of features to a project that intially only had 1. It was alot of fun, and taught me some liitations of working with Arduino as well. One major issue I had while building this project was a shift register with a damaged pin was leaking through one of its pins, and was frying one LED consistently. Another issue I ran into was a discovery I made in working with the Piezo Electric Speaker, wherein it appears that the is some small amount of crosstalk between PWM pins on the arduino, meaning that it is picking up small amounts of current and making sounds when the PWM register is altered. Despite these limitations, the project was still fun to work on, and I believe the end result turned out rathe well. I hope to continue adding features to this project in the future, and will likely update this post following.</div>
-                    </div>
-                    <div class='detailBody'>
-                        <div class='heading'>Preface</div>
-                        <div class='text endText'>This project was designed as a teaching tool for a workshop that I ran at Carleton University in hopes of teaching those interested the basics of interfacing software with hardware, and the tools used to do this. The board shown was designed and built by myself, however a slight redesign was made for the workshop to reduce costs. The final production of 30 boards as completed with the help of volunteers from the Carleton Computer Science Society. The board was designed to be very simple in its function and design, requiring very little in the way of components, allowing for an easier explanation of the board function. Through the design of this board I was able to get a better understanding of the process behind board design, production, and was able to utilize arduino sleep functions in order to save power.</div>
-                        <div class='heading'>Parts and Tools Used</div>
-                        <div class='ulist'>
-                            <ul>
-                                <li>1x Attiny45 microcontroller</li>
-                                <li>1x SN74HC595 shift registers</li>
-                                <li>1x 1KΩ resistors</li>
-                                <li>1x 220Ω resistors</li>
-                                <li>6x LED's (Red was used)</li>
-                                <li>1x DIP16 Sockets</li>
-                                <li>1x DIP8 Socket</li>
-                                <li>1x 14007 Diode</li>
-                                <li>2x CR2037 Battery Clips</li>
-                                <li>2x CR2037 Batteries</li>
-                                <li>1x Tactile Switch</li>
-                                <li>1x Copper Clad Board</li>
-                                <li>Drill press</li>
-                                <li>Band Saw</li>
-                                <li>Wire strippers</li>
-                                <li>Soldering iron</li>
-                                <li>Ferric Chloride</li>
-                                <li>Acetone</li>
-                            </ul>
-                        </div>
-                        <div class='heading'>Construction</div>
-                        <div class='text bodyText'>The construction process of this Project began with designing the schematic for the circuit in EagleCAD, where I designed a very rudimentary circuit which came to form the project. An Attiny45 was chosen as the microcontroller due to its low cost, and the fact that it could easily be programmed using the arduino IDE. The Attiny connects directly to an SN74HC595 and a button in order to control the board; the shift register is in turn connected to the 6 LEDs in order to display the output. Note however that only one resistor is used to limit the current to the LEDs; this was done for multiple reasons: firstly, cost is a factor in the design of this board, and the fewer resistors used reduces not only the cost of the resistors, but also the cost of copper clad due to not needing as much space. Another factor in using only one resistor is the fact that the utilized CR2037 batteries are only really rated for a maximum current draw of 20mA, meaning that we cannot drive all LEDs at once without overexerting the batteries. In order to mitigate this, persistance of vision was utilized to rapidly display only one LED at a time quickly enough that you see a fully lit board at all times. The only real drawback of using PoV is that the intensity of each LED is reduced, however this is not significant for this project.</div>
-                        <div class='text endText'>It can also be noted that a diode connects between the grounds of the IC's and the batteries; this was done to act as a low cost voltage regulator. The Attiny is not designed to run at voltages below 2.5V which would mean that 1 CR2032 would only be able to power it for about 1/3 of its total life which would be too wasteful. The only options at this point would be to either purchase higher cost low voltage chips or to use a seconf battery to increase the minimum voltage of the circuit to about 3.5V. The second option was chosen as it was a lower cost option, however this meant that the maximum voltage was now 6V which exceeded the Attiny's 5.5V maximum. This was solved by using the voltage drop of a diode to reduce the voltage to the chip by 0.7V meaning that the maximum is now 5.3V with a minimum of 2.8V. These values are well within the range of operation of the chips and ensured that the board would be able to maximize the useful lifespan of the CR2032's.</div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Schematic2.jpg'>
-                        <div class='text bodyText'>Following circuit design came the stage of board layout, wherein I maximized space savings while still leaving enough space for the board to have a relatively attractive layout. The LEDs were laid out in the shape of a die in order to more easily visulaize the rolled values from the dice, with both ICs laid out next to eachother and the LEDs. Note however that there is no programming header present on the board, this was added to the final boards, but this example board was able to make due with removing the Attiny for programming. It can also be observed that the trace widths used are significantly more than necessary for the current being used, however this results in an easier to etch board, and so was chosen more for ease of production than for appropriate current flow.</div>
-                        <div class='text bodyText'>Following board design came the process of etching the board; for this project I utilized the toner transfer method, however it quickly became apparent during production of the distribution boards that the toner transfer method scales incredibly poorly. So much so in fact, that in future if I find myself needing to make multiples copies of a board I will likely instead make use of a PCB milling service. Despite this, the initial test board turned out quite well using the toner transfer method, and it is sufficient for making small numbers of boards. An issue I also had to deal with when producing the board was that I had accidentally mirrored the image file, resulting in an unuseable board. Regardless of these issues, I was able to etch the board relatively quickly, and drilled all of the marked holes using a 0.8mm drill bit for the component leads, and a 1mm bit for the battery and diode terminals.</div>
-                        <div class='text bodyText'>With a fully prepared board in hand I proceeded on to the process of soldering on all of the components for the circuit using lead free solder. The circuit came together rather nicely following soldering and was ready for programming. The programming of this board was of significant importance as the code needed to be effective and easily understood in order to be understood by those at the workshop. The first task I had set out for myself was to generate a simple test script, in which, when a button is pressed it will light a single LED in the list in order to confirm that data is being shifted and read correctly. Following the confirmation that the circuit is functional I moved onto writing the code that would wakeup the Attiny from sleep and roll the die when the number is pressed. This was done through a number of processes. Firstly the Attiny would go into sleep mode, with the button set as an interrupt to wake it on changing states; sleep was achieved using the arduino sleep library to give access to nicer commands, and utilizing some register manipulation to put the chip into low power mode. Upon waking up the Attiny would send multiple die states to the register to simulate a roll, finally landing on a value that would be displayed for about 2 seconds. The numbers were chosen using the XOR value between the timing registers on the Attiny, this gives rather poor rando performance, but is far better than the arduino random function which eventually begins returning the same results consecutively. I may write a better random function in future, however for now this function served the purpouse sufficiently well. The number was then sent to a function which would write out the selected value to the die face one LED at a time for a given amount of time. Following the completion of displaying a number then Attiny would reset itself to its initial state, which is a rather crude hack to fix a memory leak caused by the millis command. In future I plan to fix this function removing the need for the reset at the end of the loop, however for now it is functional.</div>
-                        <div class='text bodyText'>Other issues that I ran into throughout this process include the fact that the arduino power function returns a floating point number, which is always rounded down when converted to an int. This caused problems when attempting to send data to the LED display as many values would be off by 1 when attempting to send powers of 2 to the display. Upon realizing this mistake however it was mitigated through the use of bitshifting in order to shift the value 1 over a number of bits equal to the power, resulting in an accurate integer result. It may also be noticed that the display did not need the control og a shift register in order to produce its output, as pairs of LEDs could be combined in such a way that only 4 Attiny pins are needed, however the regster was included in order to give more control over outputs, as well as to enable those attending the workshops to learn more about bit shifting.</div>
-                        <div class='subheading'>Arduino Scripts:</div>
-                        <div class='fileLinks'>
-                            <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Dice%20Kit/files/RegisterTest/RegisterTest.ino' target='_blank'>Register Test</a>
-                            <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Dice%20Kit/files/Die%20Generator/DiceKit/DiceKit.ino' target='_blank'>Die Generator</a>
-                        </div>
-                        <div class='heading'>Conclusion</div>
-                        <div class='text endText'>This project was fun, and let me play with adding lots of features to a project that intially only had 1. It was alot of fun, and taught me some liitations of working with Arduino as well. One major issue I had while building this project was a shift register with a damaged pin was leaking through one of its pins, and was frying one LED consistently. Another issue I ran into was a discovery I made in working with the Piezo Electric Speaker, wherein it appears that the is some small amount of crosstalk between PWM pins on the arduino, meaning that it is picking up small amounts of current and making sounds when the PWM register is altered. Despite these limitations, the project was still fun to work on, and I believe the end result turned out rathe well. I hope to continue adding features to this project in the future, and will likely update this post following.</div>
-                        <div class='fileLinks'>
-                            <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Dice%20Kit/files/Hardware%20Interfacing%20with%20Software.pptx' target='_blank'>Powerpoint Presentation</a>
-                        </div>
-                    </div>
-                    <div class='detailBody'>
-                        <div class='heading'>Preface</div>
-                        <div class='text endText'>This project was made to get a better understaning of how matrixing works, while also getting a better understanding for how to use shift registers. Shift registers were chosen for this project as they allow for the control of multiple outputs, using only 3 data lines for clock, latch, and data signals. This allowed me to use an attiny85 as the dedicated controller for the LED matrix, which makes reprogramming the chip easier, while also minimizing the footprint of the controller. By building this matrix I was made to work with bit shifting and data logic, which was good practice for my university studies in which an understanding of binary data and bit logic is vital to a better understanding of how data is processed within an embedded system. On this project page you will find information on what was used to build this project, how it was constructed/programmed, and any issues or limitations I ran into while working on this project.</div>
-                        <div class='heading'>Parts and Tools Used</div>
-                        <div class='ulist'>
-                            <ul>
-                                <li>1x Attiny85 microcontroller</li>
-                                <li>1x 5V DC supply</li>
-                                <li>4x SN74HC595 shift registers</li>
-                                <li>4x IRFZ44N n-type mosfets</li>
-                                <li>4x 1MΩ resistors</li>
-                                <li>15x 330Ω resistors</li>
-                                <li>20x RGB LED's Common Cathode type</li>
-                                <li>4x DIP16 Sockets</li>
-                                <li>1x DIP8 Socket</li>
-                                <li>Insulated copper wire (solid core and stranded)</li>
-                                <li>1x Sheet of foam core</li>
-                                <li>1x Picture Frame</li>
-                                <li>1x Roll of adhesive white vinyl</li>
-                                <li>Drill press</li>
-                                <li>Wire strippers</li>
-                                <li>Soldering iron</li>
-                                <li>Box cutter</li>
-                                <li>Straight edge</li>
-                            </ul>
-                        </div>
-                        <div class='heading'>Construction</div>
-                        <div class='text bodyText'>The first step of construction was to apply the white vinyl sheet to the glass panel of the picture frame. Unfortunately, in my case, the glass was damaged and the vinyl had to be spread over the entire frame. Following this, separate cells were created for each of the LED's by cutting foam core and adding slots in order to combine them together. These cells were used in order to minimize light bleed between the cells, keeping each cell the colour of its respective LED and not of its neighbours. The final fabrication step was to measure out the center of each cell onto the rear panel of the picture frame and drill a 5mm diameter hole for each cells LED.</div>
-                        <img class='inlineImg' data-lazysrc='/img/aidan/optimized/Basic-Matrix.jpg'/>
-                        <div class='text bodyText'>Next came the task of installing and connecting all 20 LED's used. This was accomplished by first testing and inserting each RGB LED in the same orientation into their associated hole within the rear panel of the picture frame. These LED's were glued into place using hot glue, and then all Red, Green, and Blue LED pins were wired together into columns, and all ground pins were wired together into rows. Following this, the wires for the columns were matched by colour into 3 groups of 5, along with all grounds into another group of 4, which were then given male headers to allow for easy connection when testing the board. With that, construction of the matrix is complete and we can move onto the circuit and software solution.</div>
-                        <img class='inlineImg' data-lazysrc='/img/aidan/optimized/Arduino-Testing.jpg'/>
-                        <div class='text endText'>A simple mockups of the intended circuit was wired together on a breadboard for testing purposes and an arduino uno was utilized in order to test the full functionality of the circuit and to confirm that an 8MHz clock signal would be sufficient to drive the matrix without significant flickering as that is the maximum speed at which the Attiny can run without an external oscillator. A simple example sketch was written in the arduino IDE to generate randomized colours and cycle on the matrix.</div>
-                        <div class='subheading'>Arduino Files:</div>
-                        <div class='fileLinks'>
-                            <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/LED%20Matrix/files/rgb_rand/rgb_rand.ino' target='_blank'>Random RGB</a>
-                        </div>
-                        <img class='inlineImg' data-lazysrc='/img/aidan/optimized/matrixschematic.jpg'/>
-                        <div class='text bodyText'>The circuit utilized here consists of 4 SN74HC595 Shift registers (3 of which control each colour, with the final one controlling grounds), along with some IRFZ44N mosfets, all controlled by an Attiny85 microcontroller. Following the schematic you can see that busses were utilized to connect the register clock and latch signals together, allowing me to generate an output for the display and send it to the registers all at once. The data signals however pass data from ^H of each register to the data input of the next. This allows data to be cascaded, and enables us to send the 4 Bytes of control data within a single transfer. Also note that all LEDs are given a 330Ω resistor; this is not ideal, and should be balanced for each colour to prevent one colour from outshining the others. Also note that the pull down resistor values do not need to be 1MΩ as shown, but can be any value so long as it is high enough to only pass negligible current. Finally, female headers were used in order to facilitate easier connection with the matrix, however they could be omitted for a direct connection if you wish. Making all connections as shown will create a functional matrix controller; however, if you wish to get more colour control from each of the LED colours (rather than simply on or off), you can replace the ground connection to the output enable line of the three colour registers with a connection to a PWM pin on the utilized microcontoller to get more fine tuned colour control (Note that the Attiny85 does not have enough pins in order to do this for each register).</div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Controller-Top.jpg'/>
-                        <div class='text endText'>The final result of the board construction as can be seen, showing header connections and jumpers connecting lines together. The board is powered by a 5V wall power supply with a current capacity of 500mA, which due to the fact that no more than 5 LEDs should ever be lit at a time, is more than sufficient to supply the circuit. Due to the number of connections made to and around the Attiny, I opted not to install a programming header, rather, removing the chip and inserting it into a programming shield whenever changes needed to be made. This had the advantage of being easier to accomplish with less work necessary, however it also meant that I had an increased risk of damaging the chips through constantly detaching and reattaching the chip. Other than this, the only other major flaw noticeable on the board is the fact that I used dip18 socets rather than dip16, however this is not an issue, as I simply ignored the unused pins to no detriment.</div>
-                        <div class='heading'>Conclusion</div>
-                        <div class='text bodyText'>Throughout completing the design, construction, and programming of this LED matrix I was able to learn valuable information such as, how best to go about wiring LEDs into a matrix; how to better control RGB LEDs, and how to program and use shift registers with Arduino. These skills are incredibly useful when working with tasks such as these, as they allow me to have a better idea of how to go about completing projects and have acquired the skillset neccessary to continue completing such projects.</div>
-                    </div>
-                    <div class='detailBody'>
-                        <div class='heading'>Preface</div>
-                        <div class='text endText'>One of my favourite pastimes besides working with electronics projects is the setup, management, and configuration of servers. As such I have set up a number server in my home in order to run a number of services, some for fun, while others provide a large number of useful services. Not only does this allow me to access my work from anywhere in the house, but it also provides an exceptional learning experience for anyone interested in networking, and communications between systems. One issue however, that I have had with maintaining servers is keeping track of the large number of network addresses. This was partially dealt with through the use of hostnames, but still required that I memorize a number of ports. Eventually I decided that rather than memorize all of these details, I would rather design a tool that automates the process. Odysseus (name such for relatively obvious reasons) can automatically scan a predefined range of IP addresses, searching for user defined ports and services, and provides a user friendly interface for accessing all of these web pages.</div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/Mobile.png'>
-                        <div class='text bodyText'>Due to my experience working with bootstrap, and the fact that I utilize a number of mobile devices for server management, I decided to go with a mobile friendly approach towards designing Odysseus. The design was made to be very simplistic, as I have found through experience that less complex designs tend to be easier on the eyes and detract less from the important material. As such, the main page of Odysseus is populated by nothing more than the list of found web servers. Clicking on one of these images will automatically send you to the relevant web page. </div>
-                        <div class='text bodyText'>The actual programming end of Odysseus began with no more than a home page with no links yet available and all data was being served by a basic NodeJS express web server that would handle standard static web serving. Once a webserver was implemented the Node back end was developed to make use of a package called EvilScan, which takes parameters in the vein of IP's and Ports and returns anything matching the parameters in a JSON format. The server then utilizes the returned list in order to create two separate lists; a list of all IPs containing all IPs found by EvilScan, and a list of all confirmed hosts to which Odysseus will redirect. The web server then would parse this information in order to generate links for each web page.</div>
-                        <div class='text endText'>With this initial setup and design being completed, it was time to begin adding features. One of the first was to add thumbnails for the webservers; this was done easily enough through the use of a JSON file containing a list of definitions specifying which ports are used for which web service. Using this, the server would attach a list of all thumbnails that were relevant to any one web server to the description of the web server before sending it to the web page. Using this information, the web server attaches the image to the appropriate link, and adds a service name below the server name. This allows for easier identification of which web server is which, even if multiple are hosted on a single machine.</div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Settings.jpg'>
-                        <div class='text bodyText'>Up until this point all settings for the odysseus server were set manually using JSON files on the server host machine. As this is impractical I began the design of a settings page, where a user can input their parameters and edit server settings without ever having to alter files on the actual server. This started with the easiest of settings to modify, the IP range. The user would simply have to enter a start IP and end IP, and then click the submit button in order to configure the server to scan that range. Following this setting, the domain and ignore host parameters were added; these settings strip the domain name from server FQDN's if necessary, and will omit the Odysseus host server from appearing in the list of servers, respectively.</div>
-                        <div class='text bodyText'>Now that the easy settings have been implemented we must move onto the more difficult settings to modify. First is the list of hosts to omit or force; this section allows a user to prevent any selected currently active host from appearing in the list of hosts. However if they wish to block a DHCP host, they can oit the host by its hostname using the input below the selection box. These settings can be confirmed using the submit button, and the selection box will be updated. Forcing hosts has more to do with the way Odysseus was designed; Odysseus will only automatically provide links to servers with hostnames, ignoring any that do not have one. This is due to the fact that many devices that lack hostnames likely arent going to host web pages you care much about. If however, the opposite is true, then upon selecting one of these hosts its status will be changed from ignored to forced, allowing it to appear in the server list, as well as giving it its IP as a name for easy identification.</div>
-                        <div class='text bodyText'>The ports to scan selction box works in a similar fashion to the hosts box, allowing you to remove ports by selecting them from the box and submitting. However, adding ports is done by entering their port number and the attached service separated by a hyphen and submitting. This will add the port and service if an entry for that port does not already exist, otherwise it will override the pre-existing entry with the new details. One major feature addition that was recently implemented for this section was the ability to use multiple ports for a single web service, however each port can only have one unique service attached to it.</div>
-                        <div class='text bodyText'>Adding to the systems ability to redirect you to a servers web page, the host redirect section allows you to specify for any currently active server a location to which Odysseus should link the user rather than the default page. This is done by entering the redirect you want into the input box below the selection menu and submitting. As with previous control menus, any hosts that have already been added will have their previous redirects overwritten, and the redirects may be removed by selecting those you no longer wish to use from the menu, and submitting.</div>
-                        <div class='text bodyText'>The final menu on this page (not pictured) is a menu listing all currently existing thumbnail images, allowing you to delete those you do not need, or overwritinf/uploading new ones using the button below the selection menu. This menu is used in mucht he same way as the other selection menus, however there is some special functionality built in, not to the menu, but to the thumbnail naming convention itself. Any thumbnail uploaded can be named in the form of "[Service].png", which will utilise the port list in order to determine which thumbnail to apply to which link. There is another naming convention, in the form of "[Service] - [Server].png" which allows you to specify specific images for different servers, and these thumbnails will always take priority over any others. This allows you to give the links more personality, and provides for easier differentiation from servers that run on the same ports as each other.</div>
-                        <div class='text endText'>Once all nput settings match your preferences, you simply have to press the update button, and the current config will be uploaded to the server, following which the server will rescan the network using the newly specified configuration settings. The server will dropdown a popup showing the current status of the network scan, this menu is a simple modal that is also used to notify the user of configuration errors when attempting to upload an invalid configuration. With this, the settings page is completed, and is ready to be used to allow the server to be configured remotely, however if wished, the user can still modify the servers settings by modifying the JSON files on the server.</div>
-                        <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Monitoring.jpg'>
-                        <div class='text endText'>The inital goal of Odysseus was simply to scan for, and link to web servers, however I decided that since this page was going to act as a main page for the entire network, it would be useful for it to have the ability to show the current status of the servers on the network. This was achieved through the use of Nodes built in package that allows you to run system commands, and uses the ruptime command from the rwho package in order to collect uptime information from all server on the network that are running rwhod (the rwho daemon), and then populates a table with this data in order to make it easy to see server status'. The information provided includes, the server name, status, the number of active users, system uptime, and unix CPU times, allowing you to identify whether a server is online, under heavy load, or other relevant information. Note however, that this feature will only work if the host server currently has rwho installed, if not an error modal pops up to notify the user that rwho is neccessary for the use of the monitoring tool, and it is disabled again.</div>
-                        <div class='heading'>Conclusion</div>
-                        <div class='text endText'>Through the use of the odysseus tool, I have been able to more easily manage my local servers, and have not yet run into issues with any forgotten server details. It has also enabled me to keep an eye on the status of my servers, allowing me to maintain better uptimes and all around useability. Due to this project being entirely code based I have decided to host it on GitHub, which has also allowed me to reach a wider audience in order to gauge interest, and to help me find issues. Feel free to check out the code base at <a href='https://github.com/aidancrowther/Odysseus' target='_blank'>Odysseus.</a></div>
-                    </div>
-                </div>
-            </div>
-            <div id='detailNext' class='projectOptions'>
-                <div>Binary Clock</div>
-                <div>LED Dice Kit</div>
-                <div>LED Matrix</div>
-                <div>Odysseus - Network Monitoring Tool</div>
-                <div>Arduino Ammeter</div>
             </div>
         </div>
     </div>
@@ -1306,7 +586,7 @@
     </script>
     <script type="text/javascript" async defer>
     [
-        '/min/js/aidan.js',
+        '/js/aidan.js',
         '/min/js/imgtosvg.js', //--> Load svgs first
         '/min/js/lazyload.js',
     ].forEach(function(src) {

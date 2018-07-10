@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <meta http-equiv="Content-Language" content="en_CA" />
+    <meta property="og:url" content="https://www.aidancrowther.com/project/arduinoammeter" />
+    <meta property="og:type" content="portfolio" />
+    <meta property="og:title" content="Aidan Crowther - Software Engineer" />
+    <meta property="og:description" content="A developer who enjoys teaching others how to integrate software and hardware." />
+    <meta property="og:image" content="https://www.ericbellamy.ca/resources/aidan-favicon.png" />
+    <meta name="keywords" content="aidan crowther, aidancrowther, person, software developer, software engineer, ottawa, canada, carleton, carleton university" />
+    <title>Aidan Crowther - Software Engineer</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+    <style>
+    *,
+    html {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        vertical-align: top;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    html {
+        color: #000;
+        font-family: 'Raleway', sans-serif;
+        letter-spacing: 0.03em;
+        line-height: 1.4;
+    }
+
+    .center-s {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+    /* PROJECT DETAILS PAGE */
+
+    #projectDetails {
+        min-height: 100vh;
+        font-size: 110%;
+    }
+
+    #detailContainer {
+        max-width: 820px;
+        padding: 108px 40px 40px 40px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    #detailNavWrapper {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        background: #fff;
+        z-index: 100;
+        opacity: 0;
+    }
+
+    #detailNav {
+        width: 100%;
+        max-width: 820px;
+        padding: 10px 40px;
+        margin: 0 auto;
+
+        display: flex;
+    }
+
+    .detailNavItem {
+        padding: 0.5rem;
+        transition: color .25s ease;
+        cursor: pointer;
+    }
+
+    .detailNavItem:hover {
+        color: #FF8200;
+    }
+
+    #detailNext {
+        padding: 96px 40px;
+        text-align: center;
+        border-top: 1px solid #FF8200;
+        font-size: 180%;
+        position: relative;
+        transition: color 0.6s ease, transform 0.6s ease;
+        cursor: pointer;
+        color: #FF8200;
+        display: block;
+    }
+
+    #detailNext>div {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+    }
+
+    #detailNext:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #FF8200;
+        transform: translate3d(0, 0, 0) scaleY(0);
+        transition: transform 0.6s ease;
+        transform-origin: center bottom;
+    }
+
+    #detailNext:hover {
+        color: #fff;
+    }
+
+    #detailNext:hover:after {
+        transform: translate3d(0, 0, 0) scaleY(1);
+    }
+
+    .NEXTDETAIL #detailNext {
+        transform: translate3d(0, 0, 0) translate(0, 100%);
+    }
+
+    .NEXTDETAIL #detailContainer {
+        animation: fadeOut 0.6s ease 0.1s 1 forwards;
+    }
+
+
+    .projectOptions>* {
+        display: none;
+    }
+
+    .LOADED .projectOptions>* {
+        display: block;
+    }
+
+    .PROJECT_0 .projectOptions>*:nth-child(1) {
+        display: block;
+    }
+
+    .PROJECT_1 .projectOptions>*:nth-child(2) {
+        display: block;
+    }
+
+    .PROJECT_2 .projectOptions>*:nth-child(3) {
+        display: block;
+    }
+
+    .PROJECT_3 .projectOptions>*:nth-child(4) {
+        display: block;
+    }
+
+    .PROJECT_4 .projectOptions>*:nth-child(5) {
+        display: block;
+    }
+
+
+    #detailRight {
+        flex: 1;
+        position: relative;
+        margin: 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #detailProjectType {
+        margin-top: auto;
+        color: #FF8200;
+        font-size: 80%;
+        opacity: 0;
+        transform: translate(4%, 0);
+    }
+
+    #detailTitle {
+        font-size: 180%;
+        opacity: 0;
+        transform: translate(0, 4%);
+    }
+
+    #detailHeaderImg {
+        margin-top: auto;
+        width: 320px;
+        position: relative;
+    }
+
+    #detailHeaderImg:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background: #e3e3e3;
+        transform-origin: center bottom;
+        transform: translate(-50%, 0) scaleY(0);
+    }
+
+    #detailHeaderImg img {
+        width: 100%;
+        opacity: 0;
+    }
+
+    #detailHeader {
+        display: flex;
+        margin-bottom: 3rem;
+        min-height: 200px;
+    }
+
+
+    .detailBody>* {
+        opacity: 0;
+    }
+
+    #detailBodies .heading {
+        font-weight: 700;
+        font-size: 120%;
+    }
+
+    #detailBodies .subheading {
+        color: #333;
+        font-weight: 700;
+        font-size: 100%;
+    }
+
+    #detailBodies .bodyText {
+        margin-bottom: 2rem;
+    }
+
+    #detailBodies .endText {
+        margin-bottom: 3rem;
+    }
+
+    #detailBodies .ulist {
+        margin: 1rem 1.5rem 3rem 1.5rem;
+    }
+
+    #detailBodies .ulist li {
+        margin: 0.25rem 0;
+    }
+
+    #detailBodies .dividerImg {
+        width: 100%;
+        max-width: 400px;
+        margin: 3rem 0 4rem 0;
+        box-shadow: 0 0 1px 1px #ccc;
+    }
+
+    #detailBodies .inlineImg {
+        width: 100%;
+        max-width: 400px;
+        margin: 2rem 0 3rem 0;
+        box-shadow: 0 0 1px 1px #ccc;
+    }
+
+    #detailBodies .codeBox {
+        width: 100%;
+        font-size: 90%;
+        padding: 0 40px;
+        margin: 3rem 0;
+    }
+
+    #detailBodies .code {
+        width: 100%;
+        background: #ccc;
+    }
+
+    #detailBodies .codeLink {
+        display: inline-block;
+        font-size: 90%;
+        color: #FF8200;
+        margin-top: 0.5rem;
+    }
+
+    #detailBodies .fileLinks {
+        margin-bottom: 3rem;
+    }
+
+    #detailBodies .fileLinks .fileLink {
+        display: block;
+        color: #FF8200;
+    }
+
+    .LOADED .detailBody {
+        display: block;
+    }
+
+    .LOADED #projectDetails {
+        display: block;
+    }
+
+    .LOADED #detailHeaderImg:before {
+        animation: revealAboutCover 0.9s cubic-bezier(0.785, 0.135, 0.150, 0.860) 0s 1 forwards;
+    }
+
+    .LOADED #detailHeaderImg img {
+        animation: fadeIn 0.3s ease 0.9s 1 forwards;
+    }
+
+    .LOADED #detailNavWrapper {
+        animation: fadeIn 0.6s ease 0.6s 1 forwards;
+    }
+
+    .LOADED #detailTitle {
+        animation: animateIn 0.6s ease 0.3s 1 forwards;
+    }
+
+    .LOADED #detailProjectType {
+        animation: animateIn 0.6s ease 0.3s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(1) {
+        animation: fadeIn 0.9s ease 0.3s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(2) {
+        animation: fadeIn 0.9s ease 0.45s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(3) {
+        animation: fadeIn 0.9s ease 0.6s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(4) {
+        animation: fadeIn 0.9s ease 0.75s 1 forwards;
+    }
+
+    .LOADED .detailBody>*:nth-child(n + 5) {
+        animation: fadeIn 1.2s ease 0.9s 1 forwards;
+    }
+    /* HIDE PROJECT RULES */
+
+    .HIDEPROJECT #detailNavWrapper {
+        opacity: 1;
+        animation: fadeOut 0.6s ease 0.3s 1 forwards;
+    }
+
+    .HIDEPROJECT #detailHeaderImg img {
+        opacity: 1;
+        animation: fadeOut 0.3s ease 0s 1 forwards;
+    }
+
+    .HIDEPROJECT #detailHeaderImg:before {
+        transform: translate(-50%, 0) scaleY(1);
+        animation: hideAboutCover 0.9s cubic-bezier(0.785, 0.135, 0.150, 0.860) 0.3s 1 forwards;
+    }
+
+    .HIDEPROJECT #detailRight {
+        animation: hideDetailRight 0.6s ease 0.3s 1 forwards;
+    }
+
+    @keyframes hideDetailRight {
+        to {
+            opacity: 0;
+            transform: translate(4%, 0);
+        }
+    }
+
+    .HIDEPROJECT #detailBodies {
+        animation: fadeOut 0.6s ease 0.6s 1 forwards;
+    }
+
+    @media screen and (max-width: 780px) {
+        #detailNext {
+            font-size: 150%;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        body .projectTitle {
+            font-size: 160%;
+        }
+        body .projectTextCol {
+            padding-right: 1rem;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        #detailContainer,
+        #detailNav {
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+        #detailHeader {
+            flex-direction: column;
+        }
+        #detailHeaderImg {
+            width: 100%;
+        }
+        #detailRight {
+            margin: 2rem 0 0 0;
+        }
+        #detailBodies .codeBox {
+            padding: 0;
+        }
+    }
+    /* KEYFRAMES */
+
+    @keyframes revealAboutCover {
+        to {
+            transform: translate(-50%, 0) scaleY(1);
+        }
+    }
+
+    @keyframes hideAboutCover {
+        to {
+            transform: translate(-50%, 0) scaleY(0);
+        }
+    }
+
+    @keyframes animateIn {
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+        }
+    }
+
+    @keyframes fullScale {
+        to {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+    }
+
+    @keyframes leftCenterScale {
+        to {
+            transform: translate(-50%, 0) scaleX(1) translate3d(0, 0, 0);
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id='projectDetails'>
+        <div id='detailContainer'>
+            <div id='detailNavWrapper'>
+                <ul id='detailNav'>
+                    <li class='detailNavItem' data-name='about'>About</li>
+                    <li class='detailNavItem' data-name='project'>Projects</li>
+                    <li class='detailNavItem' data-name='contact'>Contact</li>
+                </ul>
+            </div>
+            <div id='detailHeader'>
+                <div id='detailHeaderImg' class='projectOptions'>
+                    <img data-lazysrc='/img/aidan/optimized/arduinoammeter.jpg' />
+                </div>
+                <div id='detailRight'>
+                    <div id='detailProjectType' class='projectOptions'>
+                        <div>Arduino Based Datalogger</div>
+                    </div>
+                    <div id='detailTitle' class='projectOptions'>
+                        <div>Arduino Ammeter</div>
+                    </div>
+                </div>
+            </div>
+            <div id='detailBodies'>
+                <div class='detailBody'>
+                    <div class='heading'>Preface</div>
+                    <div class='text endText'>I've recently been working on building a small arduino based datalogger that can be left alone for many days on end and give me information about the weather in my area. This project has been requiring that I do alot of work on the front of power optimizations and collecting information about my batteries and conversion circuitry. One major issue that I ran into however was that a standard multimeter is terrible at reading rapidly fluctuating values, and wont give a good picture of my circuits current draw while running. The solution that I came up with then was to use an arduino based system to print rapidly collected data to a serial plotter in order to give me a better view of how the current draw changes while running my code. Do note however that this solution does have some issues, and would be better implemented with an oscilloscope if I had one. This circuit could also be iproved by using a high accuracy Op-Amp to provide an amplified signal from the voltage drop, which would in turn allow for a higher accuracy with a higher current allowance, however these can be expensive and hard to obtain, so I opted for a low cost approach.</div>
+                    <div class='heading'>Parts and Tools Used</div>
+                    <div class='ulist'>
+                        <ul>
+                            <li>1x Attiny85 microcontroller</li>
+                            <li>2x 1KΩ resistors</li>
+                            <li>1x 47Ω 5W resistor</li>
+                            <li>2x Tactile switches</li>
+                            <li>1x DIP8 Socket</li>
+                            <li>1x Tactile Switch</li>
+                            <li>Male headers</li>
+                            <li>Insulated & uninsulated copper wire</li>
+                            <li>Wire strippers</li>
+                            <li>Soldering iron</li>
+                        </ul>
+                    </div>
+                    <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Calculations.jpg'>
+                    <div class='text bodyText'>This project began as a mostly mathematical one; where in calculations were performed in order to determine the resistor value to be used based on the required accuracy of measurement and required current flow. These equations were simple variations on Ohm's law, which stated that V = IR. By knowing the number of divisions on the arduino's ADC and the supply voltage, we can calculate that each division of the ADC is equivalent to a ~5mV change in measured voltage. Using this value, we can divide it by our intended accuracy range, in this case 100uA, in order to calculate the required resistor value for the circuit, in this case being ~50Ω. Due to the fact that this resistor will need to go in series with our circuit, it will limit our maximum current draw, in this case to 100mA, which for the purpouses of working with an arduino will be more than sufficient as long as we dont run too many devices off of it. Also keep in mind that the resistor will need to be able to dissipate the power going through it, in this case the maximum power across the resistor wil be ~0.5W, but this will depend on the resistor value used and the supply voltage. Note that I used a 5W resistor, this was due to the fact that it was the only resistor of a close enough value that could handle more than 0.5W of heat dissipation.</div>
+                    <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Schematic.jpg'>
+                    <div class='text endText'>Once I had determined the operational range, and requirements of my circuit I proceeded to design a circuit that would meet the requirements. The used measurement device was an AtTiny85 in order to provide a reduced cost approach to solving this problem, while also allowing for a reduced footprint. The AtTiny has its digital pins 3 and 4 connected to a 6 pin FTDI header in order to provide serial data relaying to a computer that can then generate a graph based on the returned results. The circuit is powered through the FTDI header, and powers the circuit to be measured through it as well (Due to the resistor limiting current we don't have to worry about exceeding the USB maximum). Then the shunt resistor was connected between the FTDI ground and the ground going to the circuit, note that it is recommended to measure current from the ground in order to prevent the risk of a potential being generated across our arduino. The output ground connection is also connected to the AtTiny's analog pin 1 in order to measure the voltage drop across the resistor. Two tactile buttons were also added to the two remaining pins of the AtTiny with pull up resistors in order to start and stop the serial output to allow for ease of use.</div>
+                    <div class='codeBox'>
+                        <textarea class='code' rows='16'>
+                            #include
+                            <SoftwareSerial.h>
+                                #define TX 3 #define RX 4 #define currentPin A1 #define button1 1 #define button2 0 int frequency = 10; bool reading = false; SoftwareSerial Serial(RX, TX); void setup() { pinMode(button2, INPUT); pinMode(button1, INPUT); pinMode(currentPin, INPUT); pinMode(RX, INPUT); pinMode(TX, OUTPUT); Serial.begin(9600); Serial.println("High speed Ammeter v1.0"); Serial.println("READY"); } void loop(){ if(reading){ double vDrop = analogRead(currentPin)*(5.0/1023.0); double current = (vDrop*1000)/47.4; Serial.println(current, 6); } if(!digitalRead(button1)) reading = true; if(!digitalRead(button2)) reading = false; delay(frequency); }
+                        </textarea>
+                        <a class='codeLink' href='https://www.aidancrowther.com/resources/projects/Arduino%20Ammeter/files/Ammeter.ino' target='_blank'>Code File</a>
+                    </div>
+                    <div class='text bodyText'>With a circuit designed programming was the next task, where in a high speed serial output needed to be generated in order to get a better view of circuit current draw. Due to the AtTiny lacking hardware serial support we will need to make use of the software serial library, which has the consequence of forcing us to use an AtTiny85 due to it massively increasing our program spave requirements. This is not a major issue however, and it allows us to customise which pins we use for serial communication, due to this we can use digital pins 3 and 4 in order to keep the MCU in line with the FTDI header. We also set a variable in the code for a delay period between current measurements in order to allow for changes through the serial monitor in future, however at this time it can be changed manually. The main loop uses very simple logic, if the start and we are currently reading, then multiply the analog reading on the currentPin by the nuber of millivolts per division in order to get a reading of the voltage drop across the shunt in milliVolts. This value is then multipled by 1000 to get a voltage drop in volts, and is divided by the measured value of the resistor in order to return a value in milliAmps.</div>
+                    <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Waveform.jpg'>
+                    <div class='text endText'>By using a serial monitor you can read the values returned over serial, or you can plot the values using either a third party program or the arduino serial plotter. The generated plot will show milliAmps, and using a computer you can apply a timescale to the horizontal axis in order to determine power consumption over time. Using these graphs you can more easily determine why and where power is being consumed by your program, or other circuitry, and it allows for more accurate and effective debugging. Using this tool has made for a decent substitution in place of an oscilloscope as it allows me to collect relatively accurate power draw information, and when combined with a multimeter it allows for a very useable platform to measure, track, and reduce power consumption.</div>
+                    <img class='dividerImg' data-lazysrc='/img/aidan/optimized/Layout.jpg'>
+                    <div class='text endText'>Future plans for this project include the production of a proper printed PCB of the design, as well as providing a 6 pin female header on the other end of the board allowing the device to be used in between an FTDI programmer and boards that have FTDI headers. To this end, I also plan to look into using the AtTiny in order to forward serial information from the secondary device, however I am at this time unsure as to how best go about this. Provided is a board layout design for the current version of the board that can be used with any device connected to the output pins. You can disregard the fact that the MCU in the eagle schematic is the AtTiny13, as the pinouts are the same. As can be observed however, the circuit is so simple that it can likely be more easily made with standard proto board as most connections are directly in line with one another.</div>
+                    <div class='heading'>Conclusion</div>
+                    <div class='text endText'>Despite this circuit initially being thought of as a quick and simple solution to the problem of quickly sampling and graphing current draw of electronics, it quickly became apparent that it is in fact significantly useful, and as such warranted proper construction, design, and implementation in order to make my project construction and testing easier and more effective. As such, I would highly recommend this board to any electronics hobbyist who needs a quick and simple way of measuring and plotting device current draw, as it makes for a very helful tool, especially when diagnosing hardware faults.</div>
+                </div>
+            </div>
+        </div>
+        <a id='detailNext' class='projectOptions' href='http://localhost:4000/site/aidan/project/binaryclock'>
+            <div>Binary Clock</div>
+        </a>
+    </div>
+    <noscript id="deferred-styles">
+        <link rel="stylesheet" type="text/css" href="/css/aidan.css" />
+    </noscript>
+    <script>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement);
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+    </script>
+    <script type="text/javascript" async defer>
+    var adblock = true;
+    </script>
+    <script type="text/javascript" async defer>
+    [
+        '/js/project.js',
+        '/min/js/imgtosvg.js', //--> Load svgs first
+        '/min/js/lazyload.js',
+    ].forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        document.head.appendChild(script);
+    });
+    </script>
+</body>
+
+</html>
