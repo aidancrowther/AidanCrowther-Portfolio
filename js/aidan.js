@@ -328,7 +328,7 @@ function initListeners() {
             if(pathName.substring(pathName.length - 1).localeCompare('/') === 0)
                 pathName = pathName.substring(0, pathName.length - 1);
 
-            window.history.pushState("", "", pathName + '/' + this.dataset.name);
+            window.history.pushState("", "", pathName + '/#' + this.dataset.name);
 
             toggleContent(this.dataset.name);
         });
