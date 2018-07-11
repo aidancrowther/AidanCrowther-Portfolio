@@ -151,6 +151,7 @@ function handleWindowScroll() {
             if (lastScroll - scrollProgress < 0 || i != lastPage) {
                 if (scrollProgress < pages[i].offsetTop + (pages[i].clientHeight - (clientHeight * 0.55))) {
                     lastPage = i;
+                    window.location.hash = "#" + pageList[i];
                     setCurrPage(i, len);
                     break;
                 }
@@ -162,7 +163,6 @@ function handleWindowScroll() {
 }
 
 function setCurrPage(index, len) {
-
     if (!body.classList.contains('PAGE_' + index))
         body.classList.toggle('PAGE_' + index, true);
 }

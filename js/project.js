@@ -16,14 +16,11 @@ var indexReady = true;
 
 // Page variables
 var loadStatus = false;
-var loadFrame, prevScroll;
-var sidebarPadding = 16; //--> Padding above and below the sidebar
+var prevScroll;
 
 
 // ANIMATION ELEMENTS
 var scrollInterval;
-var pageList = ['portfolio', 'networkscaling', 'biasedpost', 'apexdesigns', 'acapollo'];
-
 
 // REQUEST HANDLER
 var xhr;
@@ -135,40 +132,7 @@ function handleWindowScroll() {
     var parent;
     var len;
 
-
-    len = pages.length;
-    var scrollProgress = bodyEle.scrollTop;
-    if (body.classList.contains('CONTENTPAGE')) {
-        for (var i = 0; i < len; i++) {
-            if (lastScroll - scrollProgress < 0 || i != lastPage) {
-                if (scrollProgress < pages[i].offsetTop + (pages[i].clientHeight - (clientHeight * 0.55))) {
-                    lastPage = i;
-                    setCurrPage(i, len);
-                    break;
-                }
-            } else
-                break;
-        }
-    }
     lastScroll = scrollProgress;
-}
-
-function setCurrPage(index, len) {
-
-    if (!body.classList.contains('PAGE_' + index))
-        body.classList.toggle('PAGE_' + index, true);
-}
-
-function deactivatePages(index) {
-    for (var i = 0; i < len; i++) {
-        var pageI = 'PAGE_' + i;
-        if (i != index && body.classList.contains(pageI))
-            body.classList.toggle('UN' + pageI, true);
-        else
-            body.classList.toggle('UN' + pageI, false);
-
-        body.classList.toggle(pageI, false);
-    }
 }
 
 function resize() {
@@ -178,19 +142,6 @@ function resize() {
 
     var docBody = document.body,
         html = document.documentElement;
-
-
-    pageHeight = Math.max(body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight, html.offsetHeight);
-
-
-    // If we have article_sidebar.js
-    try {
-        SIDEBAR_RESIZE(clientWidth, clientHeight);
-    } catch (err) {
-        // Handle error(s) here
-    }
-    // setEleHeights();
 }
 
 // Set the height for any heightSet elements nested within a heightRef parent class
@@ -256,7 +207,7 @@ function initSupports() {
 }
 
 function initVariables() {
-    sidebarPadding = 16;
+
 }
 
 
@@ -270,8 +221,6 @@ function initIntervals() {
 function initElements() {
     body = document.getElementsByTagName('body')[0];
     nav = document.getElementsByTagName('nav')[0];
-    pages = document.getElementsByClassName('page');
-    projectItems = document.getElementsByClassName('projectItem');
 
 
     contentBody = document.getElementById('body');
