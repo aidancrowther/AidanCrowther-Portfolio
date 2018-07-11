@@ -16,7 +16,7 @@ var indexReady = true;
 
 // Page variables
 var loadStatus = false;
-var prevScroll;
+var scrollProgress, prevScroll;
 
 
 // ANIMATION ELEMENTS
