@@ -295,7 +295,7 @@ function initListeners() {
             var pathName = window.location.pathname;
             pathName = pathName.substring(0, pathName.lastIndexOf("/"));
             pathName = pathName.substring(0, pathName.lastIndexOf("/"));
-            window.location.href = pathName + "/" + this.dataset.name;
+            window.location.href = pathName + "/#" + this.dataset.name;
         });
     }
 

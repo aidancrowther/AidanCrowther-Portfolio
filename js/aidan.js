@@ -32,22 +32,12 @@ function startMain() {
     initSupports(); //Check what this browser supports
     initElements();
 
-    var pathName = window.location.pathname;
+    var hash = window.location.hash;
+    hash = hash.substring(1);
 
-    if(pathName.substring(pathName.length - 1).localeCompare('/') === 0){
-        pathName = pathName.substring(0, pathName.length - 1);
-        window.history.pushState("", "", pathName);
-    }
-
-    var pageName = pathName.substring(pathName.lastIndexOf('/') + 1);
-
-    // Toggle the right project page for the url, /project --> projectPage ele
-    if (pageList.indexOf(pageName) != -1) {
-        toggleContent(pageName);
-    } else {
-        var pathEnding = pathName.substring(pathName.lastIndexOf('/') + 1);
-        if(allowedEndings.indexOf(pathEnding) === -1)
-            window.history.pushState("", "", pathName.substring(0, pathName.indexOf(pageName) - 1));
+    if(hash.length > 0){
+        if (pageList.indexOf(hash) != -1)
+            toggleContent(hash);
     }
 
     function onBlur() {
