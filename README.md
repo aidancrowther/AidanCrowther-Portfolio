@@ -1,4 +1,4 @@
-**The live website can be found at [ericbellamy.ca/site/aidan](https://ericbellamy.ca/site/aidan)**
+**The live website can be found at [aidancrowther.com](https://aidancrowther.com)**
 
 # Aidan Crowther - Portfolio Website
 
@@ -8,7 +8,7 @@ The page focuses on both load speed and performance. Achieving a 100/100 on Goog
 
 ## Status
 
-The project is finished, and can be viewed live at [ericbellamy.ca/site/aidan](https://ericbellamy.ca/site/aidan)
+The project is finished, and can be viewed live at [aidancrowther.com](https://aidancrowther.com)
 
 
 ## Stack Details
