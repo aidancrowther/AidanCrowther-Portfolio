@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<html>
+
+<head>
+    <meta charset="utf8" />
+    <meta http-equiv="Content-Language" content="en_CA" />
+    <meta property="og:url" content="https://www.ericbellamy.ca/aidan" />
+    <meta property="og:type" content="portfolio" />
+    <meta property="og:title" content="Aidan Crowther - Software Engineer" />
+    <meta property="og:description" content="A developer who enjoys teaching others how to integrate software and hardware." />
+    <meta property="og:image" content="https://www.ericbellamy.ca/resources/aidan-favicon.png" />
+    <meta name="keywords" content="aidan crowther, aidancrowther, person, software developer, software engineer, ottawa, canada, carleton, carleton university" />
+    <title>Aidan Crowther - Software Engineer</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+    <style>
+    *,
+    html {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        vertical-align: top;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    html {
+        color: #000;
+        font-family: 'Raleway', sans-serif;
+        letter-spacing: 0.03em;
+        line-height: 1.4;
+    }
+
+    #body {
+        z-index: 1;
+        width: 100%;
+        transition: opacity 0.6s ease;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    #background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #fff;
+        z-index: 0;
+    }
+
+    .center-s {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .page {
+        min-height: 100vh;
+        position: relative;
+        z-index: 4;
+    }
+    /* NAV INTRO */
+
+    #navPage {
+        z-index: 10;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 4;
+    }
+
+    .CONTENTPAGE #navPage {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .HIDENAV #navPage {
+        z-index: -100;
+        opacity: 0;
+    }
+
+    #navIntro {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        font-size: 2vw;
+        line-height: 1.4;
+    }
+
+    #navTitle {
+        font-weight: 900;
+        font-size: 400%;
+        line-height: 1.2;
+    }
+
+    .FADENAV #navTitle {
+        animation: verticalPosFade 0.7s ease 0s 1 forwards;
+    }
+
+    .FADENAV #navDesc {
+        animation: verticalPosFade 0.7s ease 0.1s 1 forwards;
+    }
+
+    .FADENAV #navIntroList {
+        animation: verticalPosFade 0.7s ease 0.2s 1 forwards;
+    }
+
+    @keyframes verticalPosFade {
+        to {
+            opacity: 0;
+            transform: translate(0, 4%);
+        }
+    }
+
+    #navDesc,
+    .navIntroItem {
+        font-size: 130%;
+    }
+
+    #navIntroList {
+        margin-top: 1.5em;
+    }
+
+    .navIntroItem {
+        margin: 0 0.5rem;
+        display: inline-block;
+        color: #FF8200;
+        position: relative;
+        cursor: pointer;
+    }
+
+    body.CONTENTPAGE .navIntroItem {
+        cursor: default;
+    }
+    /* BEGIN CONTENT CODE */
+
+    #contentBody {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100%;
+        z-index: -100;
+        opacity: 0;
+        display: none;
+        transform: translate3d(0, 0, 0);
+    }
+    /* CONTENT NAV */
+
+    #contentNav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    #contentList {
+        float: right;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+    }
+
+    .contentOption {
+        padding: 0 0.5rem;
+        transition: color 0.2s ease;
+    }
+
+    .contentOption:hover {
+        color: #FF8200;
+    }
+    /* ABOUT PAGE */
+
+    #aboutIntro {
+        display: flex;
+        width: 100%;
+        max-width: 900px;
+        padding: 40px;
+    }
+    /* ABOUT LEFT COL */
+
+    #aboutLeft {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        font-size: 0.9em;
+    }
+
+    #aboutLeft,
+    #aboutImg {
+        width: 320px;
+    }
+
+    #aboutImg img {
+        width: 100%;
+        height: auto;
+    }
+
+    #aboutTitle {
+        font-size: 180%;
+        margin: 1.5rem 0 0.25rem 0;
+    }
+
+    #aboutJob {
+        font-weight: 500;
+        margin-bottom: 3rem;
+    }
+
+    #aboutJob>span {
+        color: #FF8200;
+    }
+
+    #aboutLinks {
+        margin: 0.25rem 0;
+    }
+
+    .aboutLink {
+        color: #FF8200;
+        margin: 0 0.25rem;
+    }
+    /* ABOUT RIGHT COL */
+
+    #aboutRight {
+        flex: 1;
+        width: 40vw;
+        max-width: 520px;
+        padding-left: 2rem;
+        margin-left: 2rem;
+        line-height: 1.6;
+        position: relative;
+    }
+
+    #aboutRight .heading {
+        color: #FF8200;
+    }
+
+    #aboutRight .text {
+        margin-bottom: 1.5rem;
+        font-size: 110%;
+    }
+
+    #aboutRight:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        background: #e3e3e3;
+        transform: translate3d(0, 0, 0) scaleY(0);
+    }
+
+    #aboutResume {
+        margin-top: 1rem;
+        padding: 0.5rem 1.5rem;
+
+        display: inline-block;
+        background: #000;
+        color: #fff;
+        font-weight: 500;
+        font-size: 80%;
+    }
+    /* PROJECT DETAILS */
+
+    #projectDetails {
+        position: relative;
+        display: none;
+    }
+    /* ABOUT ANIMATION PREP */
+
+    #aboutLeft>.opacity>*,
+    #aboutRight>.opacity>* {
+        opacity: 0;
+    }
+    /* PROJECT ANIMATION PREP */
+
+    #projectPage {
+        opacity: 0;
+    }
+    /* CONTACT ANIMATION PREP */
+
+    #contactTitle {
+        opacity: 0;
+        transform: translate(0, 4%);
+    }
+
+    #contactDesc,
+    .contactLink {
+        opacity: 0;
+    }
+
+    #contactPage .credit {
+        opacity: 0;
+    }
+    /* MAX FONT SIZE */
+
+    @media screen and (min-width: 1000px) {
+        body #navTitle {
+            font-size: 80px;
+        }
+        body #navDesc,
+        body .navIntroItem {
+            font-size: 24px;
+        }
+    }
+    /* RESPONSIVE DESIGN */
+
+    @media screen and (max-width: 870px) {
+        body #aboutIntro {
+            flex-direction: column;
+            position: relative;
+            transform: none;
+            top: 0;
+            left: 0;
+        }
+        #aboutLeft {
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            max-width: none;
+            flex-direction: row;
+        }
+        #aboutLeft>.opacity {
+            flex: 1;
+            margin-left: 40px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+        #aboutTitle {
+            margin-top: auto;
+        }
+
+        #aboutRight {
+            width: 100%;
+            max-width: 680px;
+            padding-right: 3rem;
+            margin: 3rem 0 6rem 0;
+        }
+
+        #aboutPointer {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 780px) {
+        body #projectPage {
+            padding: 60px 40px;
+        }
+        body .projectItem {
+            flex-direction: column;
+            margin-bottom: 6rem;
+        }
+        body .projectImageCol,
+        body .projectImg {
+            width: 100%;
+        }
+        body .projectTextCol {
+            order: 1;
+            padding: 3rem 3rem 0 0;
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        #navTitle {
+            font-size: 440%;
+        }
+        #navDesc {
+            font-size: 200%;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .navIntroItem {
+            font-size: 200%;
+        }
+        #aboutIntro {
+            padding: 20px;
+        }
+        body #projectPage {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        #aboutImg {
+            width: 100%;
+        }
+        #aboutLeft {
+            flex-direction: column;
+        }
+        #aboutLeft>.opacity {
+            margin-left: 0;
+            margin-top: 3rem;
+        }
+
+        #aboutRight {
+            padding: 3rem 0 0 0;
+        }
+        #aboutRight:before {
+            width: 100%;
+            height: 1px;
+        }
+
+
+        body #contactContainer {
+            font-size: 120%;
+        }
+    }
+    </style>
+</head>
+
+<body class='SHOWNAV'>
+    <div id='background'></div>
+    <div id='body'>
+        <div id='navPage'>
+            <div id='navIntro' class='center-s noselect'>
+                <h3 id='navTitle'>AIDAN CROWTHER</h3>
+                <div id='navDesc'>A Software Engineer based in Ottawa, Canada.</div>
+                <ul id='navIntroList'>
+                    <li class='navIntroItem' data-name='about'>About</li>
+                    <li class='navIntroItem' data-name='project'>Projects</li>
+                    <li class='navIntroItem' data-name='contact'>Contact</li>
+                </ul>
+            </div>
+        </div>
+        <div id='contentBody'>
+            <div class='page' id='aboutPage'>
+                <!-- Optional content navbar -->
+                <div id='contentNav' class='hidden'>
+                    <ul id='contentList'>
+                        <li class='contentOption' data-name='project'>Projects</li>
+                        <li class='contentOption' data-name='contact'>Contact</li>
+                    </ul>
+                </div>
+                <div id='aboutIntro' class='center-s noselect'>
+                    <div id='aboutLeft'>
+                        <div id='aboutImg'>
+                            <img data-lazysrc='/img/aidan.jpg'>
+                        </div>
+                        <div class='opacity'>
+                            <h3 id='aboutTitle'>AIDAN CROWTHER</h3>
+                            <div id='aboutJob'>Web Master at <span>Eyerus Games</span></div>
+                            <div id='aboutLinks'>
+                                <a class='aboutLink' href='https://github.com/aidancrowther' target='_blank'>Github</a>
+                                <a class='aboutLink' href='https://ca.linkedin.com/in/aidan-crowther-2ba855112' target='_blank'>LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id='aboutRight'>
+                        <div class='opacity'>
+                            <div class='heading'>Profile</div>
+                            <div class='text'>
+                                I am a 4th year computer science student, studying at Carleton University in Ottawa, Canada. I enjoy working with and figuring out more about electronics and computers, which was a major driver in my program choice.
+                            </div>
+                            <div class='text'>
+                                I have a background in several languages, being English, Italian, and French. My programming background is diverse, primarily using; C, Python, Java, JavaScript, PHP, Assembly, and others.
+                            </div>
+                            <div class='text'>
+                                I like to design and construct electronic devices and projects to practice, and showcase my understanding.
+                            </div>
+                        </div>
+                        <a id='aboutResume' href='https://www.aidancrowther.com/resume.php'>RESUME</a>
+                    </div>
+                </div>
+                <div id='aboutPointer'></div>
+            </div>
+            <div class='page' id='projectPage'>
+                <a class='projectItem' href='/project/arduinoammeter'>
+                    <div class='projectImageCol'>
+                        <div class='projectImg'>
+                            <img data-lazysrc='/img/arduinoammeter.jpg'>
+                        </div>
+                    </div>
+                    <div class='projectTextCol'>
+                        <div class='projectTitle'>Arduino Ammeter</div>
+                        <div class='projectDesc'>A small arduino based datalogger with a focus on power optimization.</div>
+                        <div class='projectDate'></div>
+                    </div>
+                </a>
+                <a class='projectItem' href='/project/binaryclock'>
+                    <div class='projectTextCol'>
+                        <div class='projectTitle'>Binary Clock</div>
+                        <div class='projectDesc'>A binary clock capable of telling the time, displaying animations, setting alarms and self-dimming based on ambient light levels.</div>
+                        <div class='projectDate'></div>
+                    </div>
+                    <div class='projectImageCol'>
+                        <div class='projectImg'>
+                            <img data-lazysrc='/img/binaryclock.jpg'>
+                        </div>
+                    </div>
+                </a>
+                <a class='projectItem' href='/project/leddicekit'>
+                    <div class='projectImageCol'>
+                        <div class='projectImg'>
+                            <img data-lazysrc='/img/dicekit.jpg'>
+                        </div>
+                    </div>
+                    <div class='projectTextCol'>
+                        <div class='projectTitle'>Dice Kit</div>
+                        <div class='projectDesc'>Created a teaching tool for my workshop at Carleton University with the goal of introducing others to the hardware.</div>
+                        <div class='projectDate'></div>
+                    </div>
+                </a>
+                <a class='projectItem' href='/project/ledmatrix'>
+                    <div class='projectTextCol'>
+                        <div class='projectTitle'>LED Matrix</div>
+                        <div class='projectDesc'>Created an LED matrix using shift registers in order to gain a better understanding of binary data and bit logic.</div>
+                        <div class='projectDate'></div>
+                    </div>
+                    <div class='projectImageCol'>
+                        <div class='projectImg'>
+                            <img data-lazysrc='/img/ledmatrix.jpg'>
+                        </div>
+                    </div>
+                </a>
+                <a class='projectItem' href='/project/odysseus'>
+                    <div class='projectImageCol'>
+                        <div class='projectImg'>
+                            <img data-lazysrc='/img/odysseus.jpg'>
+                        </div>
+                    </div>
+                    <div class='projectTextCol'>
+                        <div class='projectTitle'>Odysseus</div>
+                        <div class='projectDesc'>A small arduino based datalogger with a focus on power optimization.</div>
+                        <div class='projectDate'></div>
+                    </div>
+                </a>
+            </div>
+            <div class='page' id='contactPage'>
+                <div id='contactContainer' class='center-s'>
+                    <div id='contactTitle'>Hi there!</div>
+                    <div id='contactDesc'>I'm always looking for interesting projects, or new ideas. Send me an <a href='mailto:aidan.crowther@outlook.com'>email.</a></div>
+                    <ul id='contactSocials'>
+                        <li class='contactLink'><a href='https://github.com/aidancrowther' target='_blank'>Github</a></li>
+                        <li class='contactLink'><a href='https://www.aidancrowther.com/resume.php'>Resume</a></li>
+                        <li class='contactLink'><a href='https://ca.linkedin.com/in/aidan-crowther-2ba855112' target='_blank'>LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div class='credit'>Website created by <a href='https://ericbellamy.ca'>Eric Bellamy</a></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <noscript id="deferred-styles">
+        <link rel="stylesheet" type="text/css" href="/css/aidan.css" />
+    </noscript>
+    <script async defer>
+    var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+    };
+    var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+    else window.addEventListener('load', loadDeferredStyles);
+
+    [
+        '/js/min/aidan.js',
+        '/js/min/imgtosvg.js', //--> Load svgs first
+        '/js/min/lazyload.js',
+    ].forEach(function(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        document.head.appendChild(script);
+    });
+    </script>
+    <script type="text/javascript" async defer>
+    var adblock = true;
+    </script>
+</body>
+
+</html>

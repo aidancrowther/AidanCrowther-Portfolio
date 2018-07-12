@@ -1,0 +1,25 @@
+{
+  "name": "aidan-portfolio",
+  "version": "1.0.0",
+  "description": "**The live website can be found at [ericbellamy.ca/site/aidan](https://ericbellamy.ca/site/aidan)**",
+  "main": "server.js",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricBellamy/AidanCrowther-Portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EricBellamy/AidanCrowther-Portfolio/issues"
+  },
+  "homepage": "https://github.com/EricBellamy/AidanCrowther-Portfolio#readme"
+}

@@ -1,0 +1,37 @@
+{
+    "arduinoammeter": {
+        "detailHeaderImg": "/img/arduinoammeter.jpg",
+        "detailProjectType": "Arduino Based Datalogger",
+        "detailTitle": "Arduino Ammeter",
+        "detailNext": "Binary Clock",
+        "detailNextUrl": "/project/binaryclock"
+    },
+    "binaryclock": {
+        "detailHeaderImg": "/img/binaryclock.jpg",
+        "detailProjectType": "Binary Alarm Clock",
+        "detailTitle": "Binary Clock",
+        "detailNext": "LED Dice Kit",
+        "detailNextUrl": "/project/leddicekit"
+    },
+    "leddicekit": {
+        "detailHeaderImg": "/img/dicekit.jpg",
+        "detailProjectType": "Custom Hardware Intro Kit",
+        "detailTitle": "LED Dice Kit",
+        "detailNext": "LED Matrix",
+        "detailNextUrl": "/project/ledmatrix"
+    },
+    "ledmatrix": {
+        "detailHeaderImg": "/img/ledmatrix.jpg",
+        "detailProjectType": "LED Light Matrix",
+        "detailTitle": "LED Matrix",
+        "detailNext": "Odysseus",
+        "detailNextUrl": "/project/odysseus"
+    },
+    "odysseus": {
+        "detailHeaderImg": "/img/odysseus.jpg",
+        "detailProjectType": "Network Monitoring Tool",
+        "detailTitle": "Odysseus",
+        "detailNext": "Arduino Ammeter",
+        "detailNextUrl": "/project/arduinoammeter"
+    }
+}

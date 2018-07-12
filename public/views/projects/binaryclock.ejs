@@ -1,0 +1,440 @@
+<div class='heading'>Preface</div>
+<div class='text endText'>I started this project wanting to make a simple binary clock that could only tell the time; however, it quickly grew to include more features. At present this project is able to tell time using a DS1302 RTC module, with a CR2032 as a backup for time keeping, it can display siple animations, has an alarm clock, and automatically dims based on ambient lighting. I also intend to add buttons to allow for easier time/alarm setting that doesnt require reprogramming the micro controller every time.</div>
+<div class='heading'>Parts and Tools Used</div>
+<div class='ulist'>
+    <ul>
+        <li>1x Arduino pro mini</li>
+        <li>1x 5V DC supply</li>
+        <li>2x SN74HC595 shift registers</li>
+        <li>1x 1KΩ resistors</li>
+        <li>1x 10KΩ resistors</li>
+        <li>16x 220Ω resistors</li>
+        <li>16x LED's</li>
+        <li>2x DIP16 Sockets</li>
+        <li>1x RTC module</li>
+        <li>1x CR2032</li>
+        <li>16x LED holders</li>
+        <li>1x Toggle Switch</li>
+        <li>1x DC Barrel Jack Plug/Connector</li>
+        <li>1x 10K LDR</li>
+        <li>1x Piezo Speaker</li>
+        <li>Male and Female Headers</li>
+        <li>Insulated copper wire (solid core and stranded)</li>
+        <li>Bussing Wire</li>
+        <li>Wooden Box</li>
+        <li>Spray Paint</li>
+        <li>Drill press</li>
+        <li>Wire strippers</li>
+        <li>Soldering iron</li>
+        <li>Box cutter</li>
+        <li>Straight edge</li>
+    </ul>
+</div>
+<img class='dividerImg' data-lazysrc='/img/Matrix.jpg'>
+<div class='text bodyText'>The first step of construction was to drill a 4x4 grid of holes into the front panel of the wooden case used in order to install LED holders. This was done using a 19/64" drill bit in a drill press, and by measuring and marking the grid of locations in which to drill holes. Following the holes being made, the panel was sanded to remove splinters caused by the cheap wood being damaged by drilling. After sanding, the box's front and back portions were spray painted black in order to give them a nicer look. Once painting was done the LED holders were inserted and fastened into the holes, and had LEDs inserted into them, with all cathodes facing the top of the box, and anodes facing the bottom. A grid of bussing wire was used to connect all of the grounds together in rows, and then the 4 rows were joined by a column of bussing wire in the middle. Each LED then received a wire connected to the anode, whih lead to a male header. LEDs were connected to the header in groups of 8, being separated by a ground connection in the middle of the header. The rear of the panel then received a DC barrel jack socket which was connected to a length of wire, and a male header.</div>
+<img class='dividerImg' data-lazysrc='/img/Controller-Front.jpg'>
+<div class='text bodyText'>With the LED display now done, it was time to build the control circuitry. The first step was to solder male headers onto a new Arduino pro mini, and then to connect it to a perf board. Next to it was placed an RTC module which was inserted into the board upside down in order to make use of its male headers. The Arduino and RTC were connected using the 3 wire interface that the module uses, there are also modules that use the I2C bus, however I do not have one of these. The RTC module was then connected to the VCC and GND pins of the Arduino in order to power it, while the arduino receives power through its RAW pin in order to allow input voltages of 5V-12V. A female header was used to connect the board to the input male header from the DC barrel jack. Some example code from the Arduino forums was then used in order to test and set the values of the RTC module. The date and time were simply inserted into the startup section of the program, and when it was uploaded the serial monitor was used to ensure the correct value was being displayed. Note that you should reupload this script following setting the time with the setup variable commented out in order to keep the clock from being reset on power loss.</div>
+<div class='text endText'>Once the RTC was set and tested the next step was to add the shift registers which would control the LEDs. Since the power supply is able to provide the neccessary current, we are able to light all LEDs at once, meaning that we will not have to worry about using POV, and while we could matrix this display in order to halve the nuber of needed registers, it is easier from a programming perspective to just drive them all directly. As such, the two registers were cascaded together in order to form a 16 bit register, to which we could then push data to control all of the LEDs individually. the outputs that went to the female header that connects to the display had 220Ω resistors added in order to limit the current flowing to the resistors. Standard procedure was followed for connecting the register to the Arduino with one exception, rather than connect the Output Enable line directly to ground as usual, both were tied together, and then connected to a PWM pin of the arduino so that we can then control the output brightness easily. In order to determine the ambient light value an LDR was installed to the top of the case, and connects to the board through headers. The LDR forms a voltage divider with another 10K0Ω resistor in order to measure the ambient light on an analog pin. A simple lighting test was written in order to confirm that it was able to read the ambient light value correctly.</div>
+<div class='subheading'>Arduino Files:</div>
+<div class='fileLinks'>
+    <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Binary%20Clock/Files/test/test.ino' target='_blank'>RTC set and test</a>
+    <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Binary%20Clock/Files/LightTest/LightTest.ino' target='_blank'>Ambient light measurement</a>
+</div>
+<img class='dividerImg' data-lazysrc='/img/Controller-Back.jpg'>
+<div class='text endText'>With the circuit setup to read time and light, the next thing to add was a small piezo electric speaker. This speaker is connected to one of the Arduinos PWM pins in order to utilize the tone command to control it and playback tones. A small toggle switch was also placed on the side of the case to act as an alarm control switch. When flipped up the control pin is pulled low, and it disables the alarm, and when flipped up the alarm is enabled. Once a predefined alarm time is reached, if the alarm is enabled it will begine beeping and flashing the alarm time until the lever is flipped off. Although not incredibly loud, and crude, it performs quite well, however I may add a feature to use an audio jack to playback audio in future.</div>
+<div class='subheading'>Arduino Files:</div>
+<div class='fileLinks'>
+    <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Binary%20Clock/Files/Speaker_Test/Speaker_Test.ino' target='_blank'>Speaker test</a>
+</div>
+<img class='dividerImg' data-lazysrc='/img/Connections.jpg'>
+<div class='text bodyText'>With the current feature set implemented, all connections are made to the board using headers in order to allow for easy disassembly and upgrading. The final step of the project was to combine all of the features, and create a functional clock program. I began by porting over the time reading code from the RTC test program, and wrote a function to parse data sent from it. This function takes the hours tens digits, hours ones digit, minutes tens digit and minutes ones digit, as arguments, and parses the data to be displayed on the display. The loop function also writed a PWM value based on the currently detected light level in order to control the displays brightness based on ambient light. Note that because the Output Enable line is active low, 0 is maximum brightness, and 255 is off.</div>
+<div class='codeBox'>
+    <textarea class='code' rows='16'>
+        <!--
+            //Pin connected to SH_CP of 74HC595
+            #define clockPin 9
+            //Pin connected to ST_CP of 74HC595
+            #define latchPin 8
+            //Pin connected to DS of 74HC595
+            #define dataPin 7
+            //Pin connected to OE of 74HC595
+            #define outputEnable 10
+            //Pin connected to the light sensor
+            #define photocellPin A2
+            // Arduino pin for the Serial Clock
+            #define DS1302_SCLK_PIN 11
+            // Arduino pin for the Data I/O
+            #define DS1302_IO_PIN 12
+            // Arduino pin for the Chip Enable
+            #define DS1302_CE_PIN 13
+            //Arduino pin for speaker
+            #define SpeakerPin 5
+            //Arduino pin connected to the alarm control switch
+            #define AlarmPin 3
+            // Macros to convert the bcd values of the registers to normal
+            // integer variables.
+            // The code uses separate variables for the high byte and the low byte
+            // of the bcd, so these macros handle both bytes separately.
+            #define bcd2bin(h,l)    (((h)*10) + (l))
+            #define bin2bcd_h(x)   ((x)/10)
+            #define bin2bcd_l(x)    ((x)%10)
+            // Register names.
+            // Since the highest bit is always '1', 
+            // the registers start at 0x80
+            // If the register is read, the lowest bit should be '1'.
+            #define DS1302_SECONDS           0x80
+            #define DS1302_MINUTES           0x82
+            #define DS1302_HOURS             0x84
+            #define DS1302_DATE              0x86
+            #define DS1302_MONTH             0x88
+            #define DS1302_DAY               0x8A
+            #define DS1302_YEAR              0x8C
+            #define DS1302_ENABLE            0x8E
+            #define DS1302_TRICKLE           0x90
+            #define DS1302_CLOCK_BURST       0xBE
+            #define DS1302_CLOCK_BURST_WRITE 0xBE
+            #define DS1302_CLOCK_BURST_READ  0xBF
+            #define DS1302_RAMSTART          0xC0
+            #define DS1302_RAMEND            0xFC
+            #define DS1302_RAM_BURST         0xFE
+            #define DS1302_RAM_BURST_WRITE   0xFE
+            #define DS1302_RAM_BURST_READ    0xFF
+            // Defines for the bits, to be able to change 
+            // between bit number and binary definition.
+            // By using the bit number, using the DS1302 
+            // is like programming an AVR microcontroller.
+            // But instead of using "(1<<X)", or "_BV(X)", 
+            // the Arduino "bit(X)" is used.
+            #define DS1302_D0 0
+            #define DS1302_D1 1
+            #define DS1302_D2 2
+            #define DS1302_D3 3
+            #define DS1302_D4 4
+            #define DS1302_D5 5
+            #define DS1302_D6 6
+            #define DS1302_D7 7
+            // Bit for reading (bit in address)
+            #define DS1302_READBIT DS1302_D0 // READBIT=1: read instruction
+            // Bit for clock (0) or ram (1) area, 
+            // called R/C-bit (bit in address)
+            #define DS1302_RC DS1302_D6
+            // Seconds Register
+            #define DS1302_CH DS1302_D7   // 1 = Clock Halt, 0 = start
+            // Hour Register
+            #define DS1302_AM_PM DS1302_D5 // 0 = AM, 1 = PM
+            #define DS1302_12_24 DS1302_D7 // 0 = 24 hour, 1 = 12 hour
+            // Enable Register
+            #define DS1302_WP DS1302_D7   // 1 = Write Protect, 0 = enabled
+            int previousMinute = 0;
+            typedef struct ds1302_struct
+            {
+                uint8_t Seconds:4;      // low decimal digit 0-9
+                uint8_t Seconds10:3;    // high decimal digit 0-5
+                uint8_t CH:1;           // CH = Clock Halt
+                uint8_t Minutes:4;
+                uint8_t Minutes10:3;
+                uint8_t reserved1:1;
+                union
+                {
+                struct
+                {
+                    uint8_t Hour:4;
+                    uint8_t Hour10:2;
+                    uint8_t reserved2:1;
+                    uint8_t hour_12_24:1; // 0 for 24 hour format
+                } h24;
+                struct
+                {
+                    uint8_t Hour:4;
+                    uint8_t Hour10:1;
+                    uint8_t AM_PM:1;      // 0 for AM, 1 for PM
+                    uint8_t reserved2:1;
+                    uint8_t hour_12_24:1; // 1 for 12 hour format
+                } h12;
+                };
+                uint8_t Date:4;           // Day of month, 1 = first day
+                uint8_t Date10:2;
+                uint8_t reserved3:2;
+                uint8_t Month:4;          // Month, 1 = January
+                uint8_t Month10:1;
+                uint8_t reserved4:3;
+                uint8_t Day:3;            // Day of week, 1 = first day (any day)
+                uint8_t reserved5:5;
+                uint8_t Year:4;           // Year, 0 = year 2000
+                uint8_t Year10:4;
+                uint8_t reserved6:7;
+                uint8_t WP:1;             // WP = Write Protect
+            };
+            int alarmTime[] = {0, 7, 0, 0};
+            void setup() {
+                ds1302_struct rtc;
+                Serial.begin(9600);
+                Serial.println(F("Binary Clock"));
+                Serial.println(F("Version 1, May 2017"));
+                
+                pinMode(latchPin, OUTPUT);
+                pinMode(clockPin, OUTPUT);
+                pinMode(dataPin, OUTPUT);
+                pinMode(outputEnable, OUTPUT);
+                pinMode(SpeakerPin, OUTPUT);
+                pinMode(AlarmPin, INPUT);
+                noTone(SpeakerPin);
+            }
+            void loop() {
+                ds1302_struct rtc;
+                char buffer[80];     // the code uses 70 characters.
+                // Read all clock data at once (burst mode).
+                DS1302_clock_burst_read( (uint8_t *) &rtc);
+                analogWrite(outputEnable, map(analogRead(photocellPin), 0, 1023, 255, 64));
+                sprintf( buffer, "Time = %02d:%02d:%02d\n", \
+                bcd2bin( rtc.h24.Hour10, rtc.h24.Hour), \
+                bcd2bin( rtc.Minutes10, rtc.Minutes), \
+                bcd2bin( rtc.Seconds10, rtc.Seconds));
+                Serial.print(buffer);
+                
+                printTime(rtc.h24.Hour10, rtc.h24.Hour, rtc.Minutes10, rtc.Minutes, false);
+                delay(500);
+            }
+            void printTime(int hour10, int hour1, int minute10, int minute1, bool alarm){
+                if((alarmTime[0] == hour10) && (alarmTime[1] == hour1) && (alarmTime[2] == minute10) && (alarmTime[3] == minute1) && !alarm){
+                bool flip = true;
+                while(digitalRead(AlarmPin)){
+                    tone(SpeakerPin, 200);
+                    delay(100);
+                    tone(SpeakerPin, 25);
+                    delay(100);
+                    noTone(SpeakerPin);
+                    if(flip){
+                    printTime(hour10, hour1, minute10, minute1, true);
+                    flip = false;
+                    }
+                    else{
+                    dataShift(0);
+                    flip = true;
+                    }
+                }
+                }
+                int data[] = {hour10, hour1, minute10, minute1};
+                int result = 0;
+                
+                for(int i=0; i<4; i++){
+                result += ((1&data[i])<<i)+((2&data[i])<<(3+i))+((4&data[i])<<(6+i))+((8&data[i])<<(9+i));
+                }
+                if(minute1 != previousMinute){
+                runAnimation(result);
+                previousMinute = minute1;
+                }
+                else dataShift(result);
+                noTone(SpeakerPin);
+            }
+            void runAnimation(int result){
+                int animation = random(0, 4);
+                
+                switch(animation){
+                case(0):
+                    dataShift(4369);
+                    delay(150);
+                    dataShift(13107);
+                    delay(150);
+                    dataShift(30583);
+                    delay(150);
+                    dataShift(65535);
+                    delay(150);
+                break;
+                case(1):
+                    dataShift(34952);
+                    delay(150);
+                    dataShift(52428);
+                    delay(150);
+                    dataShift(61166);
+                    delay(150);
+                    dataShift(65535);
+                    delay(150);
+                break;
+                case(2):
+                    dataShift(15);
+                    delay(150);
+                    dataShift(255);
+                    delay(150);
+                    dataShift(4095);
+                    delay(150);
+                    dataShift(65535);
+                    delay(150);
+                break;
+                case(3):
+                    dataShift(61440);
+                    delay(150);
+                    dataShift(65280);
+                    delay(150);
+                    dataShift(65520);
+                    delay(150);
+                    dataShift(65535);
+                    delay(150);
+                break;
+                }
+                delay(500);
+                int displayTime = random(0, 4);
+                switch(displayTime){
+                case(0):
+                    dataShift(65535);
+                    delay(150);
+                    dataShift(30583|result);
+                    delay(150);
+                    dataShift(13107|result);
+                    delay(150);
+                    dataShift(4369|result);
+                    delay(150);
+                break;
+                case(1):
+                    dataShift(65535);
+                    delay(150);
+                    dataShift(61166|result);
+                    delay(150);
+                    dataShift(52428|result);
+                    delay(150);
+                    dataShift(34952|result);
+                    delay(150);
+                break;
+                case(2):
+                    dataShift(65535);
+                    delay(150);
+                    dataShift(4095|result);
+                    delay(150);
+                    dataShift(255|result);
+                    delay(150);
+                    dataShift(15|result);
+                    delay(150);
+                break;
+                case(3):
+                    dataShift(65535);
+                    delay(150);
+                    dataShift(65520|result);
+                    delay(150);
+                    dataShift(65280|result);
+                    delay(150);
+                    dataShift(61440|result);
+                    delay(150);
+                break;
+                }
+                dataShift(result);
+            }
+            //shift out data to the register MSB first
+            void dataShift(int data){
+                //initialize the pinState variable
+                int pinState;
+                //set the clock and latch to be logic level LOW
+                digitalWrite(latchPin, 0);
+                digitalWrite(clockPin, 0);
+                digitalWrite(latchPin, 0);
+                //for each bit
+                for(int i=0; i<16; i++){
+                //set clock to logic LOW
+                digitalWrite(clockPin, 0);
+                pinState = 0;
+                //if the current bit of the number a 1, set pinState to 1
+                if(data & (1<<i)){
+                    pinState = 1;
+                }
+                //write the pinState to the register, and pulse the clock to set it
+                digitalWrite(dataPin, pinState);
+                digitalWrite(clockPin, 1);
+                }
+                //set the clock to logic level LOW
+                digitalWrite(clockPin, 0);
+                digitalWrite(latchPin, 1);
+            }
+            void DS1302_clock_burst_read( uint8_t *p)
+            {
+                int i;
+                _DS1302_start();
+                // Instead of the address, 
+                // the CLOCK_BURST_READ command is issued
+                // the I/O-line is released for the data
+                _DS1302_togglewrite( DS1302_CLOCK_BURST_READ, true);  
+                for( i=0; i<8; i++)
+                {
+                *p++ = _DS1302_toggleread();
+                }
+                _DS1302_stop();
+            }
+            void _DS1302_start( void)
+            {
+                digitalWrite( DS1302_CE_PIN, LOW); // default, not enabled
+                pinMode( DS1302_CE_PIN, OUTPUT);  
+                digitalWrite( DS1302_SCLK_PIN, LOW); // default, clock low
+                pinMode( DS1302_SCLK_PIN, OUTPUT);
+                pinMode( DS1302_IO_PIN, OUTPUT);
+                digitalWrite( DS1302_CE_PIN, HIGH); // start the session
+                delayMicroseconds( 4);           // tCC = 4us
+            }
+            void _DS1302_stop(void)
+            {
+                // Set CE low
+                digitalWrite( DS1302_CE_PIN, LOW);
+                delayMicroseconds( 4);           // tCWH = 4us
+            }
+            uint8_t _DS1302_toggleread( void)
+            {
+                uint8_t i, data;
+                data = 0;
+                for( i = 0; i <= 7; i++)
+                {
+                // Issue a clock pulse for the next databit.
+                // If the 'togglewrite' function was used before 
+                // this function, the SCLK is already high.
+                digitalWrite( DS1302_SCLK_PIN, HIGH);
+                delayMicroseconds( 1);
+                // Clock down, data is ready after some time.
+                digitalWrite( DS1302_SCLK_PIN, LOW);
+                delayMicroseconds( 1);        // tCL=1000ns, tCDD=800ns
+                // read bit, and set it in place in 'data' variable
+                bitWrite( data, i, digitalRead( DS1302_IO_PIN)); 
+                }
+                return( data);
+            }
+            void _DS1302_togglewrite( uint8_t data, uint8_t release)
+            {
+                int i;
+                for( i = 0; i <= 7; i++)
+                { 
+                // set a bit of the data on the I/O-line
+                digitalWrite( DS1302_IO_PIN, bitRead(data, i));  
+                delayMicroseconds( 1);     // tDC = 200ns
+                // clock up, data is read by DS1302
+                digitalWrite( DS1302_SCLK_PIN, HIGH);     
+                delayMicroseconds( 1);     // tCH = 1000ns, tCDH = 800ns
+                if( release && i == 7)
+                {
+                    // If this write is followed by a read, 
+                    // the I/O-line should be released after 
+                    // the last bit, before the clock line is made low.
+                    // This is according the datasheet.
+                    // I have seen other programs that don't release 
+                    // the I/O-line at this moment,
+                    // and that could cause a shortcut spike 
+                    // on the I/O-line.
+                    pinMode( DS1302_IO_PIN, INPUT);
+                    // For Arduino 1.0.3, removing the pull-up is no longer needed.
+                    // Setting the pin as 'INPUT' will already remove the pull-up.
+                    // digitalWrite (DS1302_IO, LOW); // remove any pull-up  
+                }
+                else
+                {
+                    digitalWrite( DS1302_SCLK_PIN, LOW);
+                    delayMicroseconds(1);       // tCL=1000ns, tCDD=800ns
+                }
+                }
+            }
+            -->
+    </textarea>
+    <a class='codeLink' href='https://www.aidancrowther.com/resources/projects/Arduino%20Ammeter/files/Ammeter.ino' target='_blank'>Code File</a>
+</div>
+<div class='text bodyText'>The printTime function then checks if the alarm time has been reached and the alarm is activated. If so, it will flash the time for the alarm and begin beeping the buzzer, and will not stop until the alarm switch is turned off. Otherwise the time is displayed by first creating an array containing the argument values, then a for loop is iterated from 0 - 3. Since the LEDs are wired sequentally on the horizontal axis, we simply have to calculate the current column (0-3), then bitwise and the value of that index in binary with the current value we are looking at for that column. Then each calculated value is shifted to the left equal to its equivalent index in the shift registers, and added to a result variable. Once all values have been determined for the current time it is sent to the shift registers and displayed.</div>
+<div class='text endText'>The clock also checks if it has incremented by 1 minute, and if so, will call the animation function. This function takes a display result given to it, and will randomly select a routine that is used to turn on every LED, before turning them off sequentially, leaving the current time displayed.</div>
+<div class='subheading'>Arduino Files:</div>
+<div class='fileLinks'>
+    <a class='fileLink' href='https://www.aidancrowther.com/resources/projects/Binary%20Clock/files/binaryClock/binaryClock.ino' target='_blank'>Binary Clock</a>
+</div>
+<img class='dividerImg' data-lazysrc='/img/Controller-Back.jpg'>
+<div class='heading'>Conclusion</div>
+<div class='text endText'>This project was fun, and let me play with adding lots of features to a project that intially only had 1. It was alot of fun, and taught me some liitations of working with Arduino as well. One major issue I had while building this project was a shift register with a damaged pin was leaking through one of its pins, and was frying one LED consistently. Another issue I ran into was a discovery I made in working with the Piezo Electric Speaker, wherein it appears that the is some small amount of crosstalk between PWM pins on the arduino, meaning that it is picking up small amounts of current and making sounds when the PWM register is altered. Despite these limitations, the project was still fun to work on, and I believe the end result turned out rathe well. I hope to continue adding features to this project in the future, and will likely update this post following.</div>

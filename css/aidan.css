@@ -279,6 +279,7 @@
 /* RIGHT COL */
 
 #aboutRight .heading {
+    width: 90%;
     transform: translate(4%, 0);
 }
 
