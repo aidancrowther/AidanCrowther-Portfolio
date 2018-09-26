@@ -67,7 +67,7 @@ module.exports = function(app) {
                      avg(battery) as battery
                      from log
                      where datediff(now(), cast(created as date)) = 0
-                     group by cast(created as date)`;
+                     group by hour(created)`;
           break;
 
           case("week"):
