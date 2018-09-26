@@ -15,6 +15,6 @@ app.use("/css", express.static(__dirname + '/css'));
 app.use("/js", express.static(__dirname + '/js'));
 app.use("/img", express.static(__dirname + "/img"));
 
-server.listen(80);
+server.listen(4000);
 
 require('./app/routes.js')(app); // load our routes and pass in our app
