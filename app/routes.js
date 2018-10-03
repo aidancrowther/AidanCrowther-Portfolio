@@ -78,8 +78,32 @@ module.exports = function(app) {
                      avg(light) as light,
                      avg(battery) as battery
                      from log
-                     where datediff(now(), cast(created as date)) <= 7
+                     where datediff(now(), cast(created as date)) < 7
                      group by cast(created as date)`;
+          break;
+
+          case("month"):
+            query = `select cast(created as date) as created,
+                     avg(temperature) as temperature,
+                     avg(humidex) as humidex,
+                     avg(pressure) as pressure,
+                     avg(light) as light,
+                     avg(battery) as battery
+                     from log
+                     where datediff(now(), cast(created as date)) < 31
+                     group by cast(created as date)`;
+          break;
+
+          case("year"):
+            query = `select month(created) as created,
+                     avg(temperature) as temperature,
+                     avg(humidex) as humidex,
+                     avg(pressure) as pressure,
+                     avg(light) as light,
+                     avg(battery) as battery
+                     from log
+                     where cast(created as date) > date_sub(now(), interval 12 month)
+                     group by month(created)`;
           break;
 
           default:
@@ -90,6 +114,8 @@ module.exports = function(app) {
         con.query(query, function(err, data, fields){
           res.send(data);
         });
+
+	con.end();
       });
     });
 };
